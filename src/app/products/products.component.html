@@ -1,0 +1,69 @@
+﻿<!--<div class="footer1">
+        <table>
+                <th class="nav1">
+                        
+                      </th>
+            <tr>
+                
+                <td class="profile">
+                        <h3>Welcome:.<br>{{currentUser.firstName}}</h3>
+                        <p><img src="../assets/Preloader1.gif" alt="Welcome"/></p>
+                        <p><u>Edit/View Profile</u></p>
+                </td>
+                <td class="link" style="text-align:left">
+                    <img src="../assets/cover2.jpeg" alt="">
+                </td>
+                <td class="logout">
+                        
+                </td>
+            </tr>
+        </table>
+        <!--<h3>All registered users:</h3>
+                        <ul>
+                             <li *ngFor="let user of users">
+                                {{user.username}} ({{user.firstName}} {{user.lastName}})
+                                - <a (click)="deleteUser(user.id)">Delete</a>
+                            </li>
+                        </ul> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  
+</head>
+<body>
+    <p>kenya yetu</p>
+<div>
+    <h2>Kindly Signup with the right informations</h2>
+    <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+        <div class="form-group1" [ngClass]="{ 'has-error': f.submitted && !JOB_ID.valid }">
+            <label for="JOB_ID">JOB ID</label>
+            <input type="text" class="form-control" name="JOB_ID" [(ngModel)]="model.JOB_ID" #JOB_ID="ngModel" required />
+            <div *ngIf="f.submitted && !JOB_ID.valid" class="help-block">ID is required</div>
+        </div>
+        <div class="form-group1" [ngClass]="{ 'has-error': f.submitted && !JOB_TITLE.valid }">
+            <label for="JOB_TITLE">JOB TITLE</label>
+            <input type="text" class="form-control" name="JOB_TITLE" [(ngModel)]="model.JOB_TITLE" #JOB_TITLE="ngModel" required />
+            <div *ngIf="f.submitted && !JOB_TITLE.valid" class="help-block">TITLE is required</div>
+        </div>
+        <div class="form-group1" [ngClass]="{ 'has-error': f.submitted && !MIN_SALARY.valid }">
+            <label for="MIN_SALARY">MINIMUM SALARY</label>
+            <input type="number" class="form-control" name="MIN_SALARY" [(ngModel)]="model.MIN_SALARY" #MIN_SALARY="ngModel" required />
+            <div *ngIf="f.submitted && !MIN_SALARY.valid" class="help-block">MINIMUM SALARY is required</div>
+        </div>
+        <div class="form-group1" [ngClass]="{ 'has-error': f.submitted && !MAX_SALARY.valid }">
+            <label for="MAX_SALARY">MAXIMUM SALARY</label>
+            <input type="number" class="form-control" name="MAX_SALARY" [(ngModel)]="model.MAX_SALARY" #MAX_SALARY="ngModel" required />
+            <div *ngIf="f.submitted && !MAX_SALARY.valid" class="help-block">MAXIMUM SALARY is required</div>
+        </div>
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">Register</button>
+            <a [routerLink]="['/claims']" class="btn btn-link">Cancel</a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
+

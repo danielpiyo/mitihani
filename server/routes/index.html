@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>trial</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <div>
+        <p>
+            <script>
+                const express = require('express');
+                const app = express();
+                const router = express.Router();
+                const bodyParser = require('body-parser');
+                const oracledb = require('oracledb');
+
+                // Use body parser to parse JSON body
+                router.use(bodyParser.json());
+
+                const connAttrs = {
+                 "user": "hr",
+                  "password": "HR",
+                "connectString": "localhost/XE"}
+                     
+                {
+                    "use strict";
+                
+                    oracledb.getConnection(connAttrs, function (err, connection) {
+                        if (err) {
+                            // Error connecting to DB
+                            res.set('Content-Type', 'application/json');
+                            res.status(500).send(JSON.stringify({
+                                status: 500,
+                                message: "Error connecting to DB",
+                                detailed_message: err.message
+                            }));
+                            return;
+                        }
+                
+                        connection.execute("SELECT * FROM EMPLOYEES", {}, {
+                            outFormat: oracledb.OBJECT // Return the result as Object
+                        }, function (err, result) {
+                            if (err) {
+                                res.set('Content-Type', 'application/json');
+                                res.status(500).send(JSON.stringify({
+                                    status: 500,
+                                    message: "Error getting the employees",
+                                    detailed_message: err.message
+                                }));
+                            } else {
+                                res.contentType('application/json').status(200);
+                                res.send(JSON.stringify(result.rows));
+                            }
+                            // Release the connection
+                            connection.release(
+                                function (err) {
+                                    if (err) {
+                                        console.error(err.message);
+                                    } else {
+                                        console.log("GET /employees : Connection released");
+                                    }
+                                });
+                        });
+                        
+                    });
+                }
+
+                </script>
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+﻿<div class="footer1">
+    <table>
+        <tr>
+            <td class="profile">
+                    <h4 style="text-align:left">Welcome: {{currentUser.initials}}.{{currentUser.firstName}} {{currentUser.lastName}}</h4>
+                    <h5 style="text-align:left">Role: {{currentUser.role}}.</h5>
+                    <p><img src="../assets/Preloader1.gif" alt="Welcome"/></p>
+                    <h5 style="text-align:left">Email: {{currentUser.email}}<br>Mobile No: {{currentUser.contact}}</h5>
+                    
+            </td>
+            <td class="link" style="text-align:left">
+                <ul>
+                    <p><strong><i>Useful Links</i></strong></p>
+                    <li>
+                        <a [routerLink]="['/products']">View Products</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/quatations']">Request/View Quatation</a>
+                    </li>
+                    <li>
+                       <a [routerLink]="['/policies']">View Ploicies</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/claims']">Notify/View Claims</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/query']">Post Query</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/profile']">view Profile</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/renew']">Renew your policy</a>
+                    </li>
+                </ul>
+            </td>
+            <td class="logout">
+                    <p><a [routerLink]="['/login']">Logout</a></p> 
+                    <p><a [routerLink]="['/claims']">CLAIMS</a></p>     
+            </td>
+        </tr>
+    </table>
+   <!--<div class="text-center">
+       <label class="btn btn-default">
+        Upload Image
+        <input type="file" hidden (change)="uploadFile($event)">
+       </label>
+   </div>
+-->
+   <p><a href="api/employees">EMPLOYEES</a></p>|||| <p><a href="api/dep">DEPARTMENTS</a></p>
+
+    <!--<h3>All registered users:</h3>
+                    <ul>
+                         <li *ngFor="let user of users">
+                            {{user.username}} ({{user.firstName}} {{user.lastName}})
+                            - <a (click)="deleteUser(user.id)">Delete</a>
+                        </li>
+                    </ul> -->
+</div>
+
