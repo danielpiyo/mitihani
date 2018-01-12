@@ -1,0 +1,83 @@
+﻿<div class="footer1">
+        <p class="nav1"></p>
+        <table>
+            <tr>
+                <td>
+              <div class="user">
+                     <h3>Welcome:.<br>{{currentUser.firstName}}</h3>
+                     <p><img src="../assets/Preloader1.gif" alt="Welcome"/></p>
+                     <p><u>Edit/View Profile</u></p>
+                     <ul style="text-align:left">
+                             <p><strong><i>Useful Links</i></strong></p>
+                             <li>
+                                 <a [routerLink]="['/products']">View Products</a>
+                             </li>
+                             <li>
+                                 <a [routerLink]="['/quatations']">Request/View Quatation</a>
+                             </li>
+                             <li>
+                                <a [routerLink]="['/policies']">View Ploicies</a>
+                             </li>
+                             <li>
+                                 <a [routerLink]="['/claims']">Notify/View Claims</a>
+                             </li>
+                             <li>
+                                 <a [routerLink]="['/query']">Post Query</a>
+                             </li>
+                             <li>
+                                 <a [routerLink]="['/profile']">view Profile</a>
+                             </li>
+                             <li>
+                                 <a [routerLink]="['/renew']">Renew your policy</a>
+                             </li>
+                         </ul>
+                </div>
+                    
+                </td>
+ 
+             <td>
+                 <div class="inner">
+                     <table class="tabb">  
+                             <tr>
+                                 <td>            
+                                        <h4>Motor vehicle regForm</h4>
+                                        <div class="floating-box">Product<input type="text" class="form-control" id="product" required [(ngModel)]="model.product" name="product"></div>
+                                        <div class="floating-box">Risk Group<input type="text" class="form-control" id="risk" required [(ngModel)]="model.risk" name="risk"></div>
+                                        <div class="floating-box">Reg. No. <input type="text" class="form-control" id="product" required [(ngModel)]="model.regnumber" name="regnumber"></div><br>
+                                        <div class="floating-box1">Vehicle Desc <br> <textarea size="40"  cols="15" rows="3" maxlength="100"  class="" id="desc" required [(ngModel)]="model.desc" name="description"></textarea></div>
+                                       
+                                        <div class="container">
+                                       
+                                        <h4>
+                                            Vehicle Details
+                                        </h4>
+                                            <form style="display:inline-block">
+                                                <div class="floating-box">Cover Type<input type="text" class="form-control" id="product" required [(ngModel)]="model.coverType" name="coverType"></div>
+                                                <div class="floating-box">Vehicle Value<input type="text" class="form-control" id="vehicleValue" required [(ngModel)]="model.vehicleValue" name="vehicleValue"></div>
+                                                <div class="floating-box">Manufucture Year<input type="text" class="form-control" id="manuf_Year" required [(ngModel)]="model.manufYear" name="manufYear"></div><br>
+                        
+                                                <div class="floating-box">Body Type<input type="text" class="form-control" id="bodyType" required [(ngModel)]="model.bodyType" name="bodyType"></div>
+                                                <div class="floating-box">Make<input type="text" class="form-control" id="make" required [(ngModel)]="model.make" name="make"></div>
+                                                <div class="floating-box">Windscreen Val<input type="text" class="form-control" id="screenVal" required [(ngModel)]="model.screenVal" name="screenVal"></div><br>
+
+                                                <div class="floating-box">CC<input type="text" class="form-control" id="CC" required [(ngModel)]="model.txt_CC" name="txt_CC"></div>
+                                                <div class="floating-box">Engine Number<input type="text" class="form-control" id="engineNo" required [(ngModel)]="model.txt_engineNo" name="txt_engineNo"></div>
+                                                <div class="floating-box">Rim Val<input type="text" class="form-control" id="Rim" required [(ngModel)]="model.txt_RimVal" name="txt_RimVal"></div><br>
+
+                                                <div class="floating-box">Capacity<input type="text" class="form-control" id="capacity" required [(ngModel)]="model.txt_capacity" name="txt_capacity"></div>
+                                                <div class="floating-box">Chasis Number<input type="text" class="form-control" id="chasis" required [(ngModel)]="model.txt_chasis" name="txt_chasis"></div>
+                                                <!-- <div class="floating-box">Vehicle Desc <input type="text" class="form-control" id="desc" required [(ngModel)]="model.desc" name="description"></div> -->
+                                                <button type="button" class="btn btn-default">Next</button>
+                                            </form>
+                                        </div>
+                                     </td>
+                             </tr>
+                         </table>
+                 </div>
+             </td>
+            </tr>
+        </table>
+ 
+ </div>
+ 
+

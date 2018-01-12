@@ -1,0 +1,72 @@
+﻿<div class="footer1"> 
+        <p class="nav1"></p>
+<table>
+    <tr>
+        <td>
+                <div class="user">
+                        <h3>Welcome:.<br>{{currentUser.firstName}}</h3>
+                        <p><img src="../assets/Preloader1.gif" alt="Welcome"/></p>
+                        <p><u>Edit/View Profile</u></p>
+                        <ul style="text-align:left">
+                                <p><strong><i>Useful Links</i></strong></p>
+                                <li>
+                                    <a [routerLink]="['/products']">View Products</a>
+                                </li>
+                                <li>
+                                    <a [routerLink]="['/quatations']">Request/View Quatation</a>
+                                </li>
+                                <li>
+                                   <a [routerLink]="['/policies']">View Ploicies</a>
+                                </li>
+                                <li>
+                                    <a [routerLink]="['/claims']">Notify/View Claims</a>
+                                </li>
+                                <li>
+                                    <a [routerLink]="['/query']">Post Query</a>
+                                </li>
+                                <li>
+                                    <a [routerLink]="['/profile']">view Profile</a>
+                                </li>
+                                <li>
+                                    <a [routerLink]="['/renew']">Renew your policy</a>
+                                </li>
+                            </ul>
+                   </div>
+                       
+        </td>
+        <td>
+                <div class="inner">
+                        <div class="col-md-6 col-md-offset-3">
+                                <h1>Home</h1>
+                                <p>{{bodyText}}</p>
+                                <button (click)="openModal('custom-modal-1')">Open Modal 1</button>
+                                <button (click)="openModal('custom-modal-2')">Open Modal 2</button>
+                            </div>
+                            
+                            <modal id="custom-modal-1">
+                                <div class="modal">
+                                    <div class="modal-body">
+                                        <h1>A Custom Modal!</h1>
+                                        <p>
+                                            Home page text: <input type="text" [(ngModel)]="bodyText" />
+                                        </p>
+                                        <button (click)="closeModal('custom-modal-1');">Close</button>
+                                    </div>
+                                </div>
+                                <div class="modal-background"></div>
+                            </modal>
+                            
+                            <modal id="custom-modal-2">
+                                <div class="modal">
+                                    <div class="modal-body">
+                                        <h1 style="height:1000px">A Tall Custom Modal!</h1>
+                                        <button (click)="closeModal('custom-modal-2');">Close</button>
+                                    </div>
+                                </div>
+                                <div class="modal-background"></div>
+                            </modal>
+                </div>
+        </td>
+    </tr>
+</table>
+</div>

@@ -1,9 +1,8 @@
-export class Job {
+export class Products {
     constractor(
-    JOB_ID: 'string',
-    JOB_TITILE: 'string',
-    MIN_SALARY: 'number',
-    MAX_SALARY: 'number'
+    category: 'string',
+    product_name: 'string',
+    product_code: 'number'
     )
     { }
     

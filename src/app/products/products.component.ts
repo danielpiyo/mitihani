@@ -30,10 +30,12 @@ export class ProductsComponent implements OnInit {
 }
 */
 import { Component } from '@angular/core';
-import { ProductsService } from './products.service';  
-import { IalertService } from './ialert.service';
+import { ProductsService } from './products.service'; 
+import { UserService } from '../_services/index'; 
+//import { IalertService } from './ialert.service';
 import { Router } from '@angular/router';
-import { Job } from './products';  
+import { User } from '../_models/index';
+import { Products } from './products';  
 import { Observable } from 'rxjs/Rx';
 @Component({  
 moduleId: module.id.toString(),  
@@ -42,32 +44,29 @@ templateUrl: 'products.component.html',
 providers: [ProductsService]  
 })  
 
-export class ProductsComponent {
-    model: any = {};
-    loading = false;
-    query: Observable<any[]>; 
+export class ProductsComponent {  
+    products: Observable<any[]>;
+    currentUser: User;
+        users: User[] = [];  
 
     constructor(
        private router: Router,
         private _productsService: ProductsService,
-      private ialertService: IalertService) 
-        { }
+        private userService: UserService) 
+        { 
+            this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        }
       
         ngOnInit() {  
-            this.register();  
+            this.loadAllUsers();  
+            this.getProducts()
             }
-    register() {
-        this.loading = true;
-        this._productsService.create(this.model)
-            .subscribe(
-                data => {
-        this.ialertService.success('Saving successful', true);
-                    this.router.navigate(['/claims']);
-                },
-                error => {
-                  this.ialertService.error(error);
-                    this.loading = false;
-                });
-    }
+            getProducts() {  
+                debugger  
+                this.products = this._productsService.getProducts();  
+                } 
+                private loadAllUsers() {
+                    this.userService.getAll().subscribe(users => { this.users = users; });
+                } 
+  }  
 
-}  

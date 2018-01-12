@@ -6,7 +6,7 @@ import 'rxjs/Rx'; //get everything from Rx
 import 'rxjs/add/operator/toPromise';  
 @Injectable()  
 export class ClaimsService {  
-apiUrl: string = "http://192.168.100.26:3000/api/dep";// Web API URL  
+apiUrl: string = "http://192.168.100.26:4000/api/dep";// Web API URL  
 constructor(private _http: Http) { }  
 private RegenerateData = new Subject<number>();  
 RegenerateData$ = this.RegenerateData.asObservable();  

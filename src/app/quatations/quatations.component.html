@@ -1,28 +1,86 @@
-﻿<div class="footer1">
+﻿<!--<div class="footer1">
         <table>
                 <th class="nav1">
-                        
+                        <h3>user:.<br>{{currentUser.firstName}}</h3>
+                        <p><img src="../assets/Preloader1.gif" alt="Welcome"/></p>
                       </th>
             <tr>
                 
                 <td class="profile">
-                        <h3>Welcome:.<br>{{currentUser.firstName}}</h3>
-                        <p><img src="../assets/Preloader1.gif" alt="Welcome"/></p>
+                       
                         <p><u>Edit/View Profile</u></p>
                 </td>
-                <td class="link" style="text-align:left">
-                    <img src="../assets/quatation.png" alt="">
-                </td>
+              
                 <td class="logout">
                         
                 </td>
             </tr>
         </table>
-        <!--<h3>All registered users:</h3>
+        <h3>All registered users:</h3>
                         <ul>
                              <li *ngFor="let user of users">
                                 {{user.username}} ({{user.firstName}} {{user.lastName}})
                                 - <a (click)="deleteUser(user.id)">Delete</a>
                             </li>
                         </ul> -->
-    </div>
+                        <div class="footer1">
+                                <p class="nav1"></p>
+                        <table>
+                            <tr>
+                                <td>
+                                        <div class="user">
+                                                <h3>Welcome:.<br>{{currentUser.firstName}}</h3>
+                                                <p><img src="../assets/Preloader1.gif" alt="Welcome"/></p>
+                                                <p><u>Edit/View Profile</u></p>
+                                                <ul style="text-align:left">
+                                                        <p><strong><i>Useful Links</i></strong></p>
+                                                        <li>
+                                                            <a [routerLink]="['/products']">View Products</a>
+                                                        </li>
+                                                        <li>
+                                                            <a [routerLink]="['/quatations']">Request/View Quatation</a>
+                                                        </li>
+                                                        <li>
+                                                           <a [routerLink]="['/policies']">View Ploicies</a>
+                                                        </li>
+                                                        <li>
+                                                            <a [routerLink]="['/claims']">Notify/View Claims</a>
+                                                        </li>
+                                                        <li>
+                                                            <a [routerLink]="['/query']">Post Query</a>
+                                                        </li>
+                                                        <li>
+                                                            <a [routerLink]="['/profile']">view Profile</a>
+                                                        </li>
+                                                        <li>
+                                                            <a [routerLink]="['/renew']">Renew your policy</a>
+                                                        </li>
+                                                    </ul>
+                                           </div>
+                                </td>
+                                <td>
+                                    <div class="inner">
+                                        <table class="tabb1" width="auto" border="1" align="center" cellpadding="2" cellspacing="1" >
+
+                                                <tr align="center" id="listTableHeader">
+                                                    <td width="200">Transaction Type </td>
+                                                     <td width="200">Quatation Number </td>
+                                                    <td width="200">Doc control Number</td>
+                                                    <td width="280">Incept Date</td>
+                                                    <td width="150">Period From</td>
+                                                    <td width="150">Period To</td>
+                                                    <td width="150">Chart No</td>
+                                                    <td width="200">Branch Agent</td>
+                                                    <td width="200">Class</td>
+                                                    <td width="280">Sum Insured</td>
+                                                    <td width="280">Premium</td>
+                                                    <td width="150">View</td>
+                                                    
+                                                 </tr>
+                                                
+                                          </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        </div>

@@ -58,29 +58,81 @@
     </div>
 </div>
 -->
-<div class="row">  
-    <div class="table-responsive">  
-    <table class="table ">  
-    <thead class="thead-default">  
-    <th>ID</th>  
-    <th>NAME</th>  
-    <th>EMAIL</th>    
-    <th></th>  
-    </thead>  
-    <tbody>  
-    <tr *ngFor="let cla of claims | async" scope="row">  
-    <td>{{cla.EMPLOYEE_ID}}</td>  
-    <td>{{cla.FIRST_NAME}}</td>  
-    <td>{{cla.EMAIL}}</td>   
-    <td>  
-    <button type="button" value="Update" class="btn btn-default" (click)='editClaims(cla.EMPLOYEE_ID, cla)'>Update</button>  
-    <button type="button" value="Delete" class="btn btn-danger" (click)='deleteClaims(cla.EMPLOYEE_ID)'>Delete</button>  
-    </td>  
-    </tr>  
-    </tbody>  
-    </table>  
-    </div>  
-    <div class="col-md-offset-3 col-md-3">  
-    <a routerLink="/employees" class="btn btn-warning">VIEW EMPLOYEES</a>  
-    </div>  
-    </div>  
+<div class="footer1">
+       <p class="nav1"></p>
+       <table>
+           <tr>
+               <td>
+             <div class="user">
+                    <p>Welcome:<br>{{currentUser.email}}</p>
+                    <p><img src="../assets/Preloader1.gif" alt="Welcome"/></p>
+                    <p><u>Edit/View Profile</u></p>
+                    <ul style="text-align:left">
+                            <p><strong><i>Useful Links</i></strong></p>
+                            <li>
+                                <a [routerLink]="['/products']">View Products</a>
+                            </li>
+                            <li>
+                                <a [routerLink]="['/quatations']">Request/View Quatation</a>
+                            </li>
+                            <li>
+                               <a [routerLink]="['/policies']">View Ploicies</a>
+                            </li>
+                            <li>
+                                <a [routerLink]="['/claims']">Notify/View Claims</a>
+                            </li>
+                            <li>
+                                <a [routerLink]="['/query']">Post Query</a>
+                            </li>
+                            <li>
+                                <a [routerLink]="['/profile']">view Profile</a>
+                            </li>
+                            <li>
+                                <a [routerLink]="['/renew']">Renew your policy</a>
+                            </li>
+                            <li>
+                                    <a [routerLink]="['/modal']">Pop Up</a>
+                            </li>
+                        </ul>
+               </div>
+                   
+               </td>
+
+            <td>
+                <div class="inner">
+                    <table class="tabb">  
+                            <tr>
+                                <td>            
+                                        <div class="table-responsive">  
+                                        <table class="table ">  
+                                        <thead class="thead-default">  
+                                        <th item-width="200">ID</th>  
+                                        <th>NAME</th>  
+                                        <th>EMAIL</th>    
+                                        <th>ACTION</th>  
+                                        </thead>  
+                                        <tbody>  
+                                        <tr *ngFor="let cla of claims | async" scope="row">  
+                                        <td item-width="200">{{cla.EMPLOYEE_ID}}</td>  
+                                        <td>{{cla.FIRST_NAME}}</td>  
+                                        <td>{{cla.EMAIL}}</td>   
+                                        <td>  
+                                        <button type="button" value="Update" class="btn btn-default" (click)='editClaims(cla.EMPLOYEE_ID, cla)'>Update</button>  
+                                        <button type="button" value="Delete" class="btn btn-danger" (click)='deleteClaims(cla.EMPLOYEE_ID)'>Delete</button>  
+                                        </td>  
+                                        </tr>  
+                                        </tbody>  
+                                        </table>  
+                                        </div>  
+                                        <div class="col-md-offset-3 col-md-3">  
+                                        <a routerLink="/employees" class="btn btn-warning">VIEW EMPLOYEES</a>  
+                                        </div>  
+                                     </td>
+                            </tr>
+                        </table>
+                </div>          
+            </td>
+           </tr>
+       </table>
+
+</div>

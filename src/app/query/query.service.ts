@@ -10,7 +10,7 @@ import { Job } from './query';
 
 @Injectable()
 export class QueryService {
-apiUrl: string = "http://192.168.100.26:3000/api/job";// Web API URL
+apiUrl: string = "http://localhost:3010/api/job";// Web API URL
 constructor(private _http: Http) { }  
 private RegenerateData = new Subject<number>();  
 RegenerateData$ = this.RegenerateData.asObservable();  

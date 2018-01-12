@@ -28,44 +28,105 @@
                         </ul> 
     </div>
 -->
+<div class="">
 
-    <div class="row">  
-        <div class="table-responsive">  
-        <table class="table ">  
-        <thead class="thead-default">  
-        <th>ID</th>  
-        <th>FIRST NAME</th>  
-        <th>LAST NAME</th>
-        <th>EMAIL</th>  
-        <th>PHONE NUMBER</th>  
-        <th>DATE EMPLOYED</th>
-        <th>EMPLOYEES JOB ID</th>  
-        <th>SALARY</th>  
-        <th>COMMISION PAID</th>   
-        <th>MANAGER ID</th> 
-        <th>DEPARTMENT ID</th>  
-        <th></th>  
-        </thead>  
-        <tbody>  
-        <tr *ngFor="let pol of policies | async" scope="row">  
-        <td>{{pol.EMPLOYEE_ID}}</td>  
-        <td>{{pol.FIRST_NAME}}</td>  
-        <td>{{pol.LAST_NAME}}</td> 
-        <td>{{pol.EMAIL}}</td>  
-        <td>{{pol.PHONE_NUMBER}}</td>  
-        <td>{{pol.HIRE_DATE}}</td>
-        <td>{{pol.JOB_ID}}</td>  
-        <td>{{pol.SALARY}}</td>  
-        <td>{{pol.COMMISSION_PCT}}</td>
-        <td>{{pol.MANAGER_ID}}</td>  
-        <td>{{pol.DEPARTMENT}}</td>  
-        </tr>  
-        </tbody>  
-        </table>  
-        </div>  
-        <div class="col-md-offset-3 col-md-3">  
+        <div class="row">  
+                <div class="table-responsive">  
+                <table class="table ">  
+                <thead class="thead-default">  
+                <th>Client No</th>  
+                <th>Branch</th>  
+                <th>policy</th>
+                <th>Dcon</th>  
+                <th>class</th>  
+                <th>Trans</th>
+                <th>Status</th>  
+                <th>Period from</th>  
+                <th>period to</th>   
+                <th>Insured Amount</th> 
+                <th>Premium</th>  
+                <th></th>  
+                </thead>  
+                <tbody>  
+                <tr *ngFor="let pol of policies | async" scope="row">  
+                        <td>{{pol.CLIENT_NUMBER}}</td>  
+                        <td>{{pol.BRANCH_AGENT}}</td>  
+                        <td>{{pol.POLICY_NUMBER}}</td> 
+                        <td>{{pol.DCON_NO}}</td>  
+                        <td>{{pol.CLASS_DESCRIP}}</td>  
+                        <td>{{pol.TRANS }}</td>
+                        <td>{{pol.POL_STATUS}}</td>  
+                        <td>{{pol.PERIOD_FROM}}</td>  
+                        <td>{{pol.PERIOD_TO}}</td>
+                        <td>{{pol.INSURED_AMOUNT}}</td>  
+                        <td>{{pol.DRCR_LC_PREMIUM}}</td>            
+                </tr>  
+                </tbody> 
+             </table>				
+            </div>   
+            </div>
+       <div class="col-md-offset-3 col-md-3">  
         <a routerLink="/home" class="btn btn-warning">Home</a>||||
-        <a routerLink="/claims" class="btn btn-warning">EMPLOYEES DETAIL</a>||
-          
-        </div>  
-        </div>  
+          <a routerLink="/claims" class="btn btn-warning">EMPLOYEES DETAIL</a>|| 
+           </div>  
+   <!--
+<h3>CLIENT NUMBER:</h3>
+<div>
+  <form #policyByIdForm= "ngForm" (ngSubmit)="policyById(policyByIdForm)">
+	 <div> 
+	  Enter Client NO: <input name="policyId" ngModel required #PolicyId="ngModel">
+	 </div> 
+	 <div> <br/> 	  
+	   <button [disabled]="policyByIdForm.invalid">Submit</button>
+	 </div>	  
+  </form>
+</div>  
+<br/>
+<div *ngIf="policyByIdForm.submitted">
+    <div *ngIf="policy; else loading">
+        <div class="row">  
+            <div class="table-responsive">  
+            <table class="table ">  
+            <thead class="thead-default">  
+                    <th>Client No</th>  
+                    <th>Branch</th>  
+                    <th>policy</th>
+                    <th>Dcon</th>  
+                    <th>class</th>  
+                    <th>Trans</th>
+                    <th>Status</th>  
+                    <th>Period from</th>  
+                    <th>period to</th>   
+                    <th>Insured Amount</th> 
+                    <th>Premium</th>  
+            <th></th>  
+            </thead>  
+            <tbody>  
+            <tr>  
+            <td>{{pol.CLIENT_NUMBER}}</td>  
+            <td>{{pol.BRANCH_AGENT}}</td>  
+            <td>{{pol.POLICY_NUMBER}}</td> 
+            <td>{{pol.DCON_NO}}</td>  
+            <td>{{pol.CLASS_DESCRIP}}</td>  
+            <td>{{pol.TRANS }}</td>
+            <td>{{pol.POL_STATUS}}</td>  
+            <td>{{pol.PERIOD_FROM}}</td>  
+            <td>{{pol.PERIOD_TO}}</td>
+            <td>{{pol.INSURED_AMOUNT}}</td>  
+            <td>{{pol.DRCR_LC_PREMIUM}}</td>           
+            </tr>  
+            </tbody> 
+	     </table>				
+        </div>   
+        </div>
+    <ng-template #loading>
+	<div *ngIf="dataAvailableById; else notAvailable">
+	       Loading data...
+	</div>   
+	<ng-template #notAvailable> Data not Aavailable. </ng-template>   
+    </ng-template>   
+    </div>
+    </div>
+    <div *ngIf="errorMessage" [ngClass] = "'error'"> {{errorMessage}} </div>
+</div>  
+-->

@@ -7,6 +7,9 @@ const cors = require('cors')
 
 // Get our API routes
 const api = require('./server/routes/api');
+//const api2 = require('./server/routes/create');
+//const api3 = require('./server/routes/verify');
+//const api4 = require('./server/routes/users');
 
 const app = express();
 
@@ -29,7 +32,7 @@ app.get('*', (req, res) => {
 /**
  * Get port from environment and store in Express.
  */
-const port = process.env.PORT || '3000';
+const port = process.env.PORT || '4000';
 app.set('port', port);
 
 /**

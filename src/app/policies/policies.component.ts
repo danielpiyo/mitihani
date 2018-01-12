@@ -4,6 +4,9 @@ import { User } from '../_models/index';
 import { UserService } from '../_services/index';
 import { Observable } from 'rxjs/Rx';
 import { Policies } from './policies';  
+import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+
 @Component({
     moduleId: module.id.toString(),
     selector: 'policies.component',  
@@ -11,40 +14,57 @@ import { Policies } from './policies';
     providers: [PoliciesService]  
 })
 
-export class PoliciesComponent {  
-    policies: Observable<any[]>;  
-    constructor(private _policiesService: PoliciesService) {  
-    }  
-    ngOnInit() {  
-    this.getPolicies();  
-    }  
-    //  
-    getPolicies() {  
-    debugger  
-    this.policies = this._policiesService.getPolicies();  
-    }  
-    }  
-/*
-
-export class PoliciesComponent 
-implements OnInit {
+export class PoliciesComponent implements OnInit { 
+    policies: Observable<Policies[]>;
+   policy: Policies;
+   errorMessage: String;
+   dataAvailableById= true;
+  //  policies: Observable<any[]>;
     currentUser: User;
-    users: User[] = [];
+        users: User[] = [];  
+    cust_code :String;
 
-    constructor(private userService: UserService) {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    }
+    constructor(
+       private router: Router,
+        private _policiesService: PoliciesService,
+        private userService: UserService) 
+        {
+            this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            this.cust_code=localStorage.getItem('cust_code')
+         }
+      
+       
+         ngOnInit() {  
+            this.loadAllUsers();  
+            this.getPolicies()
+            }
+            getPolicies() {  
+                debugger  
+                console.log('this.currentUser',this.currentUser);
+                this.policies = this._policiesService.getPolicies(this.currentUser.cust_code);  
+                } 
+                private loadAllUsers() {
+                    this.userService.getAll().subscribe(users => { this.users = users; });
+                } 
 
-    ngOnInit() {
-        this.loadAllUsers();
-    }
+             *  getPolicyById(client_number: string) {
+                   this.dataAvailableById= true;
+                this.policy = null;
+                    this._policiesService.getPolicyById(client_number)
+                    .subscribe(
+                            data => {  
+                            if(data.length > 0) {
+                          this.policy= data[0]; 
+                        } else {
+                        this.dataAvailableById= false; 
+                        }	
+                        },
+                            error =>  this.errorMessage = <any>error
+                     );     
+               }
 
-    deleteUser(id: number) {
-        this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
-    }
-
-    private loadAllUsers() {
-        this.userService.getAll().subscribe(users => { this.users = users; });
-    }
-}
-*/
+             policyById(policyByIdForm: NgForm) {
+                let client_number= policyByIdForm.controls['policyId'].value;
+                this.getPolicyById(client_number);
+              } 
+  }  
