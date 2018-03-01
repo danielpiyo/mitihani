@@ -3,14 +3,15 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';  
 import { User } from '../_models/index';
 //import { Job } from '../_models/index';
-import { Observable, Subject } from 'rxjs/Rx';  
-import 'rxjs/Rx'; //get everything from Rx  
+import { Observable } from 'rxjs/Observable';  
+import { Subject } from 'rxjs/Subject';  
+import 'rxjs'; //get everything from Rx  
 import 'rxjs/add/operator/toPromise';  
-import { Job } from './query';
+import { Query } from './query';
 
 @Injectable()
 export class QueryService {
-apiUrl: string = "http://localhost:3010/api/job";// Web API URL
+apiUrl: string = "http://localhost:4000/api/query";// Web API URL
 constructor(private _http: Http) { }  
 private RegenerateData = new Subject<number>();  
 RegenerateData$ = this.RegenerateData.asObservable();  
@@ -19,23 +20,9 @@ this.RegenerateData.next(mission);
 }  
 
 
-    //getAll() {
-    //    return this._http.get<Job[]>(this.apiUrl);
-    //}
-
-   // getById(id: number) {
-   //     return this._http.get('/api/users/' + id);
-   // }
-
-    create(job: Job) {
-        return this._http.post(this.apiUrl, job);
+    create(query: Query) {
+        return this._http.post(this.apiUrl, query);
     }
 
- //   update(user: User) {
-   //     return this._http.put('/api/users/' + user.id, user);
-  //  }
-
-  //  delete(id: number) {
-    //    return this._http.delete('/api/users/' + id);
-   // }
+ 
 }

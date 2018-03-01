@@ -1,138 +1,204 @@
-﻿<!--<div class="footer1">
-        <table>
-                <th class="nav1">
+<div class="inner1">
+                <div class="panel panel-success">
+                                <div class="panel-heading1">
+                                    <h5 class="panel-title"></h5>           
+                                </div> 
+        <div class="query">       
+
+                <form name="form" (ngSubmit)="f.form.valid && saveClaim()" #f="ngForm" novalidate>
+                        <table class="tabb">
+                                <tr>
+                                        <td>
+                                                <tr class="form-group2" [ngClass]="{ 'has-error': f.submitted && !CLAIMANT.valid }">
+                                                        <td>Claimant:</td>
+                                                        <td>
+                                                                <input type="text" class="form-control" name="CLAIMANT" [(ngModel)]="model.CLAIMANT" #CLAIMANT="ngModel" readonly />
+                                                                <div *ngIf="f.submitted && !CLAIMANT.valid" class="help-block">Name is needed</div>
+                                                        </td>
+
+                                                </tr>
+                                                <br>
+                                                <tr class="form-group2">
+
+                                                                <td>Policy Type:</td>
+                                                                <td>
+                                                                                <div class="pro_sel">
+                                                                                                <select class="form-control" name="POLICY_NO" [(ngModel)]="model.POLICY_NO">
+                                                                                                        <option value="0" >--Select--</option>
+                                                                                                        <option *ngFor="let pol1 of policies | async" scope="row"  value= {{pol1.POLICY_NO}} >
+                                                                                                                <div> {{pol1.CLASS_DESCRIP}}({{pol1.POLICY_NO}}) </div>
+                                                                                                  </option>
+                                                                                                      </select>
+                                                                                                     </div>
+                                                                 </td>
+        
+                                                        </tr> <br>
+                                                <tr class="form-group2">
+
+                                                        <td> Confirm Policy No:</td>
+                                                        <td>
+                                                                        <div class="pro_sel">
+                                                                                        <select class="form-control" name="PDOC_NO" [(ngModel)]="model.PDOC_NO" (change)="onSelect($event.target.value)">
+                                                                                                <option value="0" >--Select--</option>
+                                                                                                <option *ngFor="let pol of policies | async" scope="row"  value= {{pol.DCON_NO}} >
+                                                                                                        <div> {{pol.POLICY_NO}} </div>
+                                                                                          </option>
+                                                                                              </select>
+                                                                                             </div>
+                                                         </td>
+
+                                                </tr> <br>
+                                                <tr class="form-group2">
+
+                                                        <td>Dcon No:</td>
+                                                        <td>
+                                                                <div class="pro_sel">
+                                                                        <select  class="form-control" name="DCON_NO" [(ngModel)]="model.DCON_NO">
+                                                                                <option *ngIf='selectedPolicy.DCON_NO == null' value="0" >--Select--</option>
+                                                                                <option *ngFor="let dcon of risks | async" scope="row"  value= {{dcon.DCON_NO}} >{{dcon.DCON_NO}}</option>
+                                                                              </select>
+                                                                              
+                                                                </div> 
+                                                         </td>
+
+                                                </tr> <br>
+                                                <tr class="form-group2" >
+
+                                                                <td>RiskId</td>
+                                                                <td>
+                                                                                <div class="pro_sel">
+                                                                                                <select  class="form-control" name="RISK_ID" [(ngModel)]="model.RISK_ID">
+                                                                                                        <option *ngIf='selectedPolicy.DCON_NO == null' value="0" >--Select--</option>
+                                                                                                        <option *ngFor="let section of risks | async" scope="row"  value= {{section.RISK_ID}} >{{section.RISK_ID}}</option>
+                                                                                                      </select>
+                                                                                                      
+                                                                                        </div> 
+                                                                </td>                                                                
+        
+                                                        </tr>
+                                                <br>
+                                                <tr class="form-group2" >
+
+                                                        <td> Policy Class</td>
+                                                        <td>
+                                                                        <div class="pro_sel">
+                                                                                        <select  class="form-control" name="CLASS_CODE" [(ngModel)]="model.CLASS_CODE">
+                                                                                                <option *ngIf='selectedPolicy.DCON_NO == null' value="0" >--Select--</option>
+                                                                                                <option *ngFor="let class of risks | async" scope="row"  value= {{class.RISK_CLASS}} >{{class.RISK_CLASS}}</option>
+                                                                                              </select>
+                                                                                              
+                                                                                </div> 
+                                                        </td>                                                                
+
+                                                </tr>
+                                        <br>
+                                                
+                                                <tr class="form-group2" [ngClass]="{ 'has-error': f.submitted && !CLAIMANT_CONTACT.valid }">
+
+                                                        <td>Claimant Contact:</td>
+                                                        <td>
+                                                                <input type="text" class="form-control" name="CLAIMANT_CONTACT" [(ngModel)]="model.CLAIMANT_CONTACT" #CLAIMANT_CONTACT="ngModel" readonly />
+                                                                <div *ngIf="f.submitted && !CLAIMANT_CONTACT.valid" class="help-block">CONTACT is needed</div>
+                                                        </td>
+
+                                                </tr>
+                                                <br>
+                                                
+                                              
+                                        
+                                        </td>
+                                        <td style="width:50%">       
+                                                        <tr class="form-group2" [ngClass]="{ 'has-error': f.submitted && !OCCURRENCE_DATE.valid }">
+
+                                                                        <td>Occurance Date</td>
+                                                                        <td>
+                                                                                <input type="date" class="form-control" name="OCCURRENCE_DATE" [(ngModel)]="model.OCCURRENCE_DATE" #OCCURRENCE_DATE="ngModel" required />
+                                                                                <div *ngIf="f.submitted && !OCCURRENCE_DATE.valid" class="help-block">Date is needed</div>
+                                                                        </td>
+                
+                                                                </tr>
+                                                                <br>                                             
+                                                                <tr class="form-group2" [ngClass]="{ 'has-error': f.submitted && !CLAIM_LOCATION.valid }">
+                
+                                                                        <td>Accident location:</td>
+                                                                        <td>
+                                                                                <input type="text" class="form-control" name="CLAIM_LOCATION" [(ngModel)]="model.CLAIM_LOCATION" #CLAIM_LOCATION="ngModel" required />
+                                                                                <div *ngIf="f.submitted && !CLAIM_LOCATIONvalid" class="help-block">LOCATION is needed</div>
+                                                                        </td>
+                
+                                                                </tr>
+                                                                <br>
+                
+                                                                <tr class="form-group2" [ngClass]="{ 'has-error': f.submitted && !NARRATION.valid }">
+                
+                                                                        <td>Narration</td>
+                                                                        <td>
+                                                                                <textarea class="form-control" name="NARRATION" [(ngModel)]="model.NARRATION" #NARRATION="ngModel"></textarea>
+                                                                                <div *ngIf="f.submitted && !NARRATION.valid" class="help-block">NARRATION is needed</div>
+                                                                        </td>
+                
+                                                                </tr>
+                                                                <br>
+                                                                <tr class="form-group2">
+                
+                                                                        <td>Nature of Accident:</td>
+                                                                        <td>
+                                                                                        <div class="pro_sel">
+                                                                                                        <select  class="form-control" name="NATURE_OF_ACCIDENT" [(ngModel)]="model.NATURE_OF_ACCIDENT">
+                                                                                                                <option value="0" >--Select--</option>
+                                                                                                                <option *ngFor="let sec of nature | async" scope="row"  value= {{sec.CODE_DESCRIPTION}} >{{sec.CODE_DESCRIPTION}}</option>
+                                                                                                              </select>
+                                                                                                              
+                                                                                                </div> 
+                                                                        </td>
+                
+                                                                </tr>
+                                                                <br>
+                                                                <tr class="form-group2">
+                
+                                                                        <td>Accident Caused By:</td>
+                                                                        <td>
+                                                                                        <div class="pro_sel">
+                                                                                                        <select  class="form-control" name="CAUSE_CODE" [(ngModel)]="model.CAUSE_CODE">
+                                                                                                                <option value="0" >--Select--</option>
+                                                                                                                <option *ngFor="let cau of cause | async" scope="row"  value= {{cau.CODE_DESCRIPTION}} >{{cau.CODE_DESCRIPTION}}</option>
+                                                                                                              </select>
+                                                                                                              
+                                                                                                </div> 
+                                                                        </td>
+                
+                                                                </tr>
+                                                                <br>
+                                                                <tr class="form-group2" >
+                
+                                                                                <td>Estimated Loss:</td>
+                                                                                <td>
+                                                                                        <input type="number" class="form-control" name="ESTIMATED_LOSS" [(ngModel)]="model.ESTIMATED_LOSS" />
+                                                                                       
+                                                                                </td>
                         
-                      </th>
-            <tr>
-                
-                <td class="profile">
-                        <h3>Welcome:.<br>{{currentUser.firstName}}</h3>
-                        <p><img src="../assets/Preloader1.gif" alt="Welcome"/></p>
-                        <p><u>Edit/View Profile</u></p>
-                </td>
-                <td class="link" style="text-align:left">
-                    <img src="../assets/cover.jpeg" alt="">
-                </td>
-                <td class="logout">
+                                                                        </tr>
+                                                                        <br>
+                                                                        <tr>
                         
-                </td>
-            </tr>
-        </table>
-        <h3>All registered users:</h3>
-                        <ul>
-                             <li *ngFor="let user of users">
-                                {{user.username}} ({{user.firstName}} {{user.lastName}})
-                                - <a (click)="deleteUser(user.id)">Delete</a>
-                            </li>
-                        </ul> 
-    </div>
+                                                                                <td></td>
+                                                                                <td>
+                                                                                        
+                                                                                </td>
+                        
+                                                                        </tr>
+                                                                        <br>
+                                                              
+                                              
+                                        </td>
+                                </tr>
 
-
-<div class="container">
-    <div class="row">
-        <table class="table">
-            <thead class="thead-inverse">
-            <tr>
-                <th class="text-center">EMPLOYEE ID</th>
-                <th class="text-center">CUSTOMER NAME</th>
-                <th class="text-center">EMAIL</th>
-                
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let claims of claims">
-                <td class="text-center" style="width: 15px;">{{claims.employee_id}}</td>
-                <td class="text-center" style="width: 15px;">{{claims.first_name}}</td>
-                <td class="text-center" style="width: 200px;">{{claims.email}}</td>
-                
-            </tr>
-            </tbody>
-        </table>
-       <!-- <div>
-            <ul class="items">
-                <li *ngFor="let claims of claims">
-                    <span>{{claims.first_name}}</span>
-                </li>
-            </ul>
-        </div> 
-    </div>
-</div>
--->
-<div class="footer1">
-       <p class="nav1"></p>
-       <table>
-           <tr>
-               <td>
-             <div class="user">
-                    <p>Welcome:<br>{{currentUser.email}}</p>
-                    <p><img src="../assets/Preloader1.gif" alt="Welcome"/></p>
-                    <p><u>Edit/View Profile</u></p>
-                    <ul style="text-align:left">
-                            <p><strong><i>Useful Links</i></strong></p>
-                            <li>
-                                <a [routerLink]="['/products']">View Products</a>
-                            </li>
-                            <li>
-                                <a [routerLink]="['/quatations']">Request/View Quatation</a>
-                            </li>
-                            <li>
-                               <a [routerLink]="['/policies']">View Ploicies</a>
-                            </li>
-                            <li>
-                                <a [routerLink]="['/claims']">Notify/View Claims</a>
-                            </li>
-                            <li>
-                                <a [routerLink]="['/query']">Post Query</a>
-                            </li>
-                            <li>
-                                <a [routerLink]="['/profile']">view Profile</a>
-                            </li>
-                            <li>
-                                <a [routerLink]="['/renew']">Renew your policy</a>
-                            </li>
-                            <li>
-                                    <a [routerLink]="['/modal']">Pop Up</a>
-                            </li>
-                        </ul>
-               </div>
-                   
-               </td>
-
-            <td>
-                <div class="inner">
-                    <table class="tabb">  
-                            <tr>
-                                <td>            
-                                        <div class="table-responsive">  
-                                        <table class="table ">  
-                                        <thead class="thead-default">  
-                                        <th item-width="200">ID</th>  
-                                        <th>NAME</th>  
-                                        <th>EMAIL</th>    
-                                        <th>ACTION</th>  
-                                        </thead>  
-                                        <tbody>  
-                                        <tr *ngFor="let cla of claims | async" scope="row">  
-                                        <td item-width="200">{{cla.EMPLOYEE_ID}}</td>  
-                                        <td>{{cla.FIRST_NAME}}</td>  
-                                        <td>{{cla.EMAIL}}</td>   
-                                        <td>  
-                                        <button type="button" value="Update" class="btn btn-default" (click)='editClaims(cla.EMPLOYEE_ID, cla)'>Update</button>  
-                                        <button type="button" value="Delete" class="btn btn-danger" (click)='deleteClaims(cla.EMPLOYEE_ID)'>Delete</button>  
-                                        </td>  
-                                        </tr>  
-                                        </tbody>  
-                                        </table>  
-                                        </div>  
-                                        <div class="col-md-offset-3 col-md-3">  
-                                        <a routerLink="/employees" class="btn btn-warning">VIEW EMPLOYEES</a>  
-                                        </div>  
-                                     </td>
-                            </tr>
                         </table>
-                </div>          
-            </td>
-           </tr>
-       </table>
-
-</div>
+                        <div class="form-group">
+                                <button [disabled]="loading" class="btn btn-primary">submit</button>
+                                <a [routerLink]="['/profile']" class="btn btn-link">Cancel</a>
+                        </div>
+                </form>
+                <div>
+                        </div>
+                </div>

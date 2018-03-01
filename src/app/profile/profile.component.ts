@@ -2,6 +2,7 @@
 
 import { User } from '../_models/index';
 import { UserService } from '../_services/index';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     moduleId: module.id.toString(),
@@ -11,6 +12,7 @@ import { UserService } from '../_services/index';
 export class ProfileComponent implements OnInit {
     currentUser: User;
     users: User[] = [];
+    usersSubscription: Subscription;
 
     constructor(private userService: UserService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -25,6 +27,12 @@ export class ProfileComponent implements OnInit {
     }
 
     private loadAllUsers() {
-        this.userService.getAll().subscribe(users => { this.users = users; });
+        this.usersSubscription = this.userService.getAll().subscribe(users => { this.users = users; });
+    }
+
+    ngonDestroy(){
+        if(this.usersSubscription){
+            this.usersSubscription.unsubscribe();
+        }
     }
 }

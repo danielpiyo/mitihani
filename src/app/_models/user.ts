@@ -1,13 +1,22 @@
 ﻿export class User {
+    id_number: number;
     id: number;
-    username: string;
+    mobile_no: string;
+    class_id: String;
+    code: String;
     cust_code:String;
-    role: string;
-    password: string;
-    firstName: string;
-    lastName: string;
-    initials: string;
+    postal_code:String;
+    country:String;
+    postal_address: string;
+    id_type: string;
+    first_name: String;
+    last_name: string;
+    town:String;
     email: string;
-    contact: string;
-    file: string;
+    pin_number:String;
+    occup_description:String;
+    contact_person: string;
+    gender: string;
+    category: String;
+    product_name: String;
 }

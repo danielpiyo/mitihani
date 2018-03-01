@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
-
-import { ModalService } from '../_services/index';
+import { Quote } from '../quotsummary/quote';
+import { QuotsummaryService } from '../quotsummary/quotsummary.service'; 
+import { AlertService } from '../_services/index';
 
 @Component({
     moduleId: module.id.toString(),
@@ -9,19 +10,20 @@ import { ModalService } from '../_services/index';
 
 export class RquComponent implements OnInit {
     private bodyText: string;
+    quoteSummary : Quote;
+    model : any;
 
-    constructor(private modalService: ModalService) {
+    constructor(
+        private quotsummaryService : QuotsummaryService,
+        private modalService: AlertService)
+    {
+        this.quoteSummary = JSON.parse(localStorage.getItem('quoteSummary'));
     }
 
     ngOnInit() {
-        this.bodyText = 'This text can be updated in modal 1';
+       this.model.dcon_no = this.quoteSummary.control_no;
+
     }
 
-    openModal(id: string){
-        this.modalService.open(id);
-    }
-
-    closeModal(id: string){
-        this.modalService.close(id);
-    }
+  
 }

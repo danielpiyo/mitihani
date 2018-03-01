@@ -1,5 +1,5 @@
 ﻿import { Component } from '@angular/core';
-import { ClaimsComponent } from './claims/claims.component'
+//import { ClaimsComponent } from './claims/claims.component'
 import './rxjs-operators';
 
 import '../assets/app.css';
@@ -17,10 +17,10 @@ import { NgModule } from '@angular/core';
      
    
 })
-@NgModule({
-    declarations: <any>[ ClaimsComponent]
+//@NgModule({
+ //   declarations: <any>[ ClaimsComponent]
     
-})
+//})
 export class AppComponent {
     
  }

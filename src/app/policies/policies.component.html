@@ -1,132 +1,114 @@
-﻿<!--
-<div class="footer1">
-        <table>
-                <th class="nav1">
-                        
-                      </th>
-            <tr>
-                
-                <td class="profile">
-                        <h3>Welcome:.<br>{{currentUser.firstName}}</h3>
-                        <p><img src="../assets/Preloader1.gif" alt="Welcome"/></p>
-                        <p><u>Edit/View Profile</u></p>
-                </td>
-                <td class="link" style="text-align:left">
-                    <img src="../assets/policies.png" alt="">
-                </td>
-                <td class="logout">
-                        
-                </td>
-            </tr>
-        </table>
-        <h3>All registered users:</h3>
-                        <ul>
-                             <li *ngFor="let user of users">
-                                {{user.username}} ({{user.firstName}} {{user.lastName}})
-                                - <a (click)="deleteUser(user.id)">Delete</a>
-                            </li>
-                        </ul> 
-    </div>
--->
-<div class="">
+﻿
 
-        <div class="row">  
-                <div class="table-responsive">  
-                <table class="table ">  
-                <thead class="thead-default">  
-                <th>Client No</th>  
-                <th>Branch</th>  
-                <th>policy</th>
-                <th>Dcon</th>  
-                <th>class</th>  
-                <th>Trans</th>
-                <th>Status</th>  
-                <th>Period from</th>  
-                <th>period to</th>   
-                <th>Insured Amount</th> 
-                <th>Premium</th>  
-                <th></th>  
-                </thead>  
-                <tbody>  
-                <tr *ngFor="let pol of policies | async" scope="row">  
-                        <td>{{pol.CLIENT_NUMBER}}</td>  
-                        <td>{{pol.BRANCH_AGENT}}</td>  
-                        <td>{{pol.POLICY_NUMBER}}</td> 
-                        <td>{{pol.DCON_NO}}</td>  
-                        <td>{{pol.CLASS_DESCRIP}}</td>  
-                        <td>{{pol.TRANS }}</td>
-                        <td>{{pol.POL_STATUS}}</td>  
-                        <td>{{pol.PERIOD_FROM}}</td>  
-                        <td>{{pol.PERIOD_TO}}</td>
-                        <td>{{pol.INSURED_AMOUNT}}</td>  
-                        <td>{{pol.DRCR_LC_PREMIUM}}</td>            
-                </tr>  
-                </tbody> 
-             </table>				
-            </div>   
-            </div>
-       <div class="col-md-offset-3 col-md-3">  
-        <a routerLink="/home" class="btn btn-warning">Home</a>||||
-          <a routerLink="/claims" class="btn btn-warning">EMPLOYEES DETAIL</a>|| 
-           </div>  
-   <!--
-<h3>CLIENT NUMBER:</h3>
-<div>
-  <form #policyByIdForm= "ngForm" (ngSubmit)="policyById(policyByIdForm)">
-	 <div> 
-	  Enter Client NO: <input name="policyId" ngModel required #PolicyId="ngModel">
-	 </div> 
-	 <div> <br/> 	  
-	   <button [disabled]="policyByIdForm.invalid">Submit</button>
-	 </div>	  
-  </form>
-</div>  
-<br/>
-<div *ngIf="policyByIdForm.submitted">
-    <div *ngIf="policy; else loading">
-        <div class="row">  
-            <div class="table-responsive">  
-            <table class="table ">  
-            <thead class="thead-default">  
+<div class="container"
+fxLayout
+fxLayout.xs="column"
+fxLayoutAlign="right"
+fxLayoutGap="2px"
+fxLayoutGap.xs="0">
+
+<p class="nav1"></p>
+
+
+<div class="item item-1" fxFlex >
+         <div class="inner1">
+                        <div class="panel panel-success">
+
+                                        <p-dialog [style]="{'margin-left':'30px', 'border-radius': '3px', 'border' : 'solid 1px rgb(173, 172, 172)', 'background-color': 'rgb(242, 246, 247)', 'margin-right':'30px'}" [contentStyle]="{'overflow':'visible'}" modal="modal" width="700" [responsive]="true"  [(visible)]="display">
+                                                        <div class="panel panel-success">
+                                                                <div class="panel-heading">
+                                                                    <h5 class="panel-title">Extra Details</h5>           
+                                                                </div> 
+                                                    <div class="panel-body">
+                                                    <table class="table condensed" style="text-align:left" *ngFor="let quick of myPolicy | async" scope="row">
+                                                      
+                                                            <tr>
+                                                       
+                                                                    <td width="55%"><b>Dcon Number:</b></td>
+                                                                    <td width="45%">{{quick.DCON_NO}}</td>
+                                                                    </tr>
+                                                        <tr>
+                                                       
+                                                          <td width="55%"><b>Class:</b></td>
+                                                          <td width="45%">{{quick.CLASS_DESCRIP}}</td>
+                                                          </tr>
+                                                         
+                                                              <tr>
+                                                       
+                                                               <td width="71%"><b>Sum Insured:</b></td>
+                                                              <td width="29%">{{quick.INSURED_AMOUNT}}</td>
+                                                              </tr>
+                                                              <tr>
+                                                       
+                                                                  <td width="20%"><b>cover From:</b></td>
+                                                                 <td width="70%">{{quick.PERIOD_FROM | date: 'dd/MM/yyyy'}} </td>
+                                                                
+                                                                 </tr>
+                                                                 <tr>
+                                                                      <tr>
+                                                       
+                                                                              <td width="71%"><b>Cover To:</b></td>
+                                                                             <td width="29%">{{quick.PERIOD_TO | date: 'dd/MM/yyyy'}}</td>
+                                                                             </tr>
+                                                                            
+                                                                  
+                                                                   <tr>
+                                                                  <td width="71%"><b>Total Premium:</b></td>
+                                                                 <td width="29%">{{quick.DRCR_LC_PREMIUM | number:'1.0-2'}}</td>
+                                                                 </tr>
+                                        
+                                        
+                                                    </table>
+                                                
+                                                           
+                                              </div>
+                                              <p-footer>
+                                                    <button type="button" pButton icon="fa-check" (click)="display=false" class="btn btn-primary">Close</button>
+                                                    
+                                                </p-footer>
+                                        </div>
+                                            </p-dialog>
+                                        <div class="panel-heading">
+                                            <h5 class="panel-title">Policy Details</h5>           
+                                        </div>
+            <div class="reg">  
+                    <div class="table-responsive">  
+                    <table class="table" border="1"  cellpadding="2" cellspacing="1">  
+                    <thead class="thead-default" id="listTableHeader">  
                     <th>Client No</th>  
-                    <th>Branch</th>  
-                    <th>policy</th>
-                    <th>Dcon</th>  
-                    <th>class</th>  
-                    <th>Trans</th>
-                    <th>Status</th>  
-                    <th>Period from</th>  
-                    <th>period to</th>   
-                    <th>Insured Amount</th> 
-                    <th>Premium</th>  
-            <th></th>  
-            </thead>  
-            <tbody>  
-            <tr>  
-            <td>{{pol.CLIENT_NUMBER}}</td>  
-            <td>{{pol.BRANCH_AGENT}}</td>  
-            <td>{{pol.POLICY_NUMBER}}</td> 
-            <td>{{pol.DCON_NO}}</td>  
-            <td>{{pol.CLASS_DESCRIP}}</td>  
-            <td>{{pol.TRANS }}</td>
-            <td>{{pol.POL_STATUS}}</td>  
-            <td>{{pol.PERIOD_FROM}}</td>  
-            <td>{{pol.PERIOD_TO}}</td>
-            <td>{{pol.INSURED_AMOUNT}}</td>  
-            <td>{{pol.DRCR_LC_PREMIUM}}</td>           
-            </tr>  
-            </tbody> 
-	     </table>				
-        </div>   
-        </div>
-    <ng-template #loading>
-	<div *ngIf="dataAvailableById; else notAvailable">
-	       Loading data...
-	</div>   
-	<ng-template #notAvailable> Data not Aavailable. </ng-template>   
-    </ng-template>   
-    </div>
-    </div>
-    <div *ngIf="errorMessage" [ngClass] = "'error'"> {{errorMessage}} </div>
-</div>  
--->
+                    <th>Branch Number</th>  
+                    <th>policy Number</th>
+                    <th>Transaction Type</th>
+                    <th>Status</th>    
+                    <th>Action</th>
+                    </thead>  
+                    <tbody>  
+                    <tr *ngFor="let pol of policies | async" scope="row">  
+                            <td>{{pol.CLIENT_NUMBER}}</td>  
+                            <td>{{pol.BRANCH_AGENT}}</td>  
+                            <td>{{pol.POLICY_NO}}</td>
+                            <td>{{pol.TRANS }}</td>
+                            <td>{{pol.POL_STATUS}}</td>  
+                          
+                            <td>
+                                        <div>
+                                               <button class="btn btn-primary" (click)="onSelect($event.target.value); showDialog()" value={{pol.DCON_NO}}>VIEW MORE</button>
+                                       </div>
+                           </td>           
+                    </tr>  
+                    </tbody> 
+                 </table>				
+                </div>   
+         </div> 
+         </div> 
+         </div>
+</div>
+    
+
+<div class="item item-3" fxFlex="0%"> </div>
+  
+<div class="item item-2" fxFlex="0%" fxFlexOrder="3">   </div> 
+       
+</div>
+
+

@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
     }
     uploadFile(event){
         let elem = event.target;
-        console.log(elem);
+       // console.log(elem);
     }  
  
     }

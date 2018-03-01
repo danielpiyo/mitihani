@@ -1,53 +1,60 @@
-﻿    <div class="footer" style="text-align:center">
-    <div class="box">
-    <table>
-        <tr>
-            <td class="news">
-                    <h4 style="text-align:center"><strong><i> This online portal will enable clients and intermediaries to:-</i></strong></h4>
-                    <ul>
-                           <li>View their Policies</li>
-                           <li>Request for Quotations</li>
-                            <li>Request for Policy Renewals</li>
-                            <li>Notify the Insurer of Claims</li>
-                            <li>Monitor the Claims payment process</li>          
-                            <li>View profile details including beneficiaries</li>  
-                            <li>View member record card with provisional interest</li>  
-                            <li>
-                                <a [routerLink]="['/data']">Logout</a>
-                            </li>    
-                    </ul>
-            </td>
-            <td class="login">
-                  
-                <form name="form"  class="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-                <p  class="head" style="text-align:center">Sign In to Proceed..</p>
-            <label for="username" class="input1" style="text-align:left">Username</label>
-            <input type="text" class="input" name="username" [(ngModel)]="model.username" #username="ngModel" required />
-            <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !role.valid }">              
-                <label for="role" class="input1" style="text-align:left">Role</label>
-                <input type="text" class="input" name="role" [(ngModel)]="model.role" #role="ngModel" required />
-                <div *ngIf="f.submitted && !role.valid" class="help-block">Role is required</div>
-            </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-            <label for="password" class="input1" style="text-align:left">Password</label>
-            <input type="password" class="input" name="password" [(ngModel)]="model.password" #password="ngModel" required />
-            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
-        </div>
-        <div class="form-group">
-            <p style="text-align:center">
-            <button [disabled]="loading" class="btn btn-primary">Login</button>
-            <img *ngIf="loading" src="../assets.preloader.gif" />
-            <a [routerLink]="['/register']" class="btn btn-link">Signup</a>
-            </p>
-        </div>
-    </form>
-            </td>
-        </tr>
-    </table>
-    </div>
-    </div>
-    
+
+<div class="">
+
+    <div class="container"
+fxLayout
+fxLayout.xs="column"
+fxLayoutAlign="right"
+fxLayoutGap="5px"
+fxLayoutGap.xs="0">
+<div class="item item-1" fxFlex="40%" style=" text-transform:capitalize">
+    This online portal enables clients and intermediaries to :-
+  <ul style="text-align:left">
+    <li>View their Policies </li>
+    <li>Request for Quotations </li>
+    <li>Request for Policy Renewals </li>
+    <li>Notify the Insurer of Claims </li>
+    <li>Monitor the Claims payment process </li>
+    <li>Make Enquiries </li> 
+  </ul>
+
+</div>
+<div class="item item-2" fxFlex="10%" fxFlexOrder="3">   </div> 
+<div class="item item-3" fxFlex>
+          <div>
+            <form class="insync_form-control1" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+              <br>
+              <div class="form-group row" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+                <label for="inputEmail3" class="col-sm-2 col-form-label"> Email</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="inputEmail3" name="email" [(ngModel)]="model.email" #email="ngModel" required  placeholder="email"/>
+                  <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
+                </div>
+              </div>
+              <div class="form-group row" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+                  <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+                </div>
+              </div>            
+              
+              <div class="form-group row">
+                <div class="offset-sm-2 col-sm-10">
+                    <div align="center" >
+                      <p>  <button [disabled]="loading"  class="btn btn-outline-primary"> Sign In </button> 
+                        <img *ngIf="loading" src="../assets.preloader.gif" />
+                        <a [routerLink]="['/register1']" class="btn btn-link">Signup</a></p>
+                    </div>                      
+                  <!-- <button type="submit" class="btn btn-primary">Sign in</button> -->
+                </div>
+              </div>
+            </form>
+          </div>
+
+
+
+</div>
+</div>
+</div> 
 

@@ -1,85 +1,72 @@
-<div class="footer1">
-        <p class="nav1"></p>
-    <table>
-        <tr>
-            <td class="user">
-                    <h4 style="text-align:left">Welcome: {{currentUser.cust_code}}</h4>
-                    <h5 style="text-align:left">Contact: {{currentUser.mobile_no}}.</h5>
-                    <p><img src="../assets/Preloader1.gif" alt="Welcome"/></p>
-                    <h5 style="text-align:left">Email: {{currentUser.email}}</h5>
-                    
-                    <div style="text-align:left">
-                        <ul>
-                            <p><strong><i>Useful Links</i></strong></p>
+﻿<div class="">
+
+    <div class="col-md-3 tab container">
+        <div class="wrapper tab">
+        
+            <nav id="sidebar">
+                <div class=""></div>
+
+                <div class="user">
+                    <div class="nav2">
+                        <h6 style="text-align:left">Welcome: <u>{{currentUser.first_name}}</u></h6>
+                    </div>
+                    <p style="text-align:center">
+                        <img class="img_round" src="../assets/profile.png" width="100" height="100" alt="Welcome" />
+                    </p>
+
+                    <div style="text-align:left;text-transform:uppercase">
+                        <ul id="list">
+                            <li>
+                                <a [routerLink]="['/profile']">MyProfile</a>
+                            </li>
+
                             <li>
                                 <a [routerLink]="['/products']">View Products</a>
                             </li>
                             <li>
-                                <a [routerLink]="['/quatations']">Request/View Quatation</a>
+                                <a [routerLink]="['/quatations']">Quotation</a>
                             </li>
+                        
                             <li>
-                               <a [routerLink]="['/policies']">View Ploicies</a>
+                                <a [routerLink]="['/policies']">My Policies</a>
                             </li>
+
                             <li>
-                                <a [routerLink]="['/claims']">Notify/View Claims</a>
+                                <a [routerLink]="['/query']">Inquiry</a>
+                            </li>                
+                            <li>
+                                <a [routerLink]="['/claims']">Claims Notification</a>
                             </li>
+
                             <li>
-                                <a [routerLink]="['/query']">Post Query</a>
+                                <a [routerLink]="['/vquery']">My Inquiries</a>
                             </li>
+                            
                             <li>
-                                <a [routerLink]="['/profile']">view Profile</a>
+                                <a [routerLink]="['/myquotation']">My Quotations</a>
                             </li>
-                            <li>
-                                <a [routerLink]="['/renew']">Renew your policy</a>
-                            </li>
-                            <li>
-                                    <a [routerLink]="['/preg']">Product Registration</a>
-                                </li>
+
+
                             <li>
                                 <a [routerLink]="['/login']">Logout</a>
                             </li>
-                            <li>
-                                    <a href="api/employees">EMPLOYEES</a>
-                            </li>
-                            <li>
-                                    <a href="api/dep">DEPARTMENTS</a>
-                            </li>
+                         
+
+
                         </ul>
-                        
+
                     </div>
-            </td>
-       
-            
-            <td>
-                <table>
-                    <tr>
-                        <td>
-                                 <div class="inner">
-
-                                 </div>
-                    
-                        </td>
-                    </tr>
-                </table>
-                 
-            </td>
-        </tr>
-    </table>
-   <!--<div class="text-center">
-       <label class="btn btn-default">
-        Upload Image
-        <input type="file" hidden (change)="uploadFile($event)">
-       </label>
-   </div>
--->
+                </div>
+            </nav>
+        </div>
+    </div>
 
 
-    <!--<h3>All registered users:</h3>
-                    <ul>
-                         <li *ngFor="let user of users">
-                            {{user.username}} ({{user.firstName}} {{user.lastName}})
-                            - <a (click)="deleteUser(user.id)">Delete</a>
-                        </li>
-                    </ul> -->
+    <div class="col-md-9 container" style="text-align:center">
+        <!--  <div class="nav2"><p style="text-align:left">email: {{currentUser.email}}</p> </div> -->
+
+        <router-outlet></router-outlet>
 
 
+    </div>
+</div>

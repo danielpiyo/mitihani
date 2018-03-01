@@ -4,12 +4,12 @@
     MIN_SALARY: number;
     MAX_SALARY: number;
 }*/
-export class Job {
+export class Query {
     constractor(
-    JOB_ID: 'string',
-    JOB_TITILE: 'string',
-    MIN_SALARY: 'number',
-    MAX_SALARY: 'number'
+    CUST_CODE: 'String',
+    EMAIL: 'String',
+    ISSUE_CATEGORY: 'String',
+    NARRATION: 'String'
     )
     { }
     
