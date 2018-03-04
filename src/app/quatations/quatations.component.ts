@@ -76,10 +76,14 @@ export class QuatationsComponent implements OnInit {
         this.loadAllUsers();
         this.getCategories();
         this.quickQuote.p_client_code = this.currentUser.cust_code;
-        //this.quickQuote.p_end_date = this.quickQuote.p_start_date.setFullYear(this.quickQuote.p_start_date.getFullYear() + 1)
-       // this.quickQuote.p_end_date.setDate(this.quickQuote.p_start_date.getDate() + 365)
-        //  this.quickQuote.p_end_date = this.quickQuote.p_start_date.setFullYear(this.quickQuote.p_start_date.getFullYear() + 1) ;   
+        
 
+        var next = new Date();
+        var year = next.getFullYear();
+        var month = next.getMonth();
+        var day = next.getDate();
+        var end = new Date(year + 1, month, day)
+        this.quickQuote.p_end_date = end;
     }
 
 
@@ -99,7 +103,7 @@ export class QuatationsComponent implements OnInit {
                 this.alertService.success('Quatation Request successful', true);
                 this.quotsummaryService.setQuote(JSON.parse(response._body).data)
                 this.router.navigate(['/quotsummary']);
-            },
+            }, 
             error => {
                 this.alertService.error(error);
                 this.loading = false;

@@ -23,7 +23,7 @@ fxLayoutGap.xs="0">
                         <p-dialog [style]="{'margin-left':'30px', 'border-radius': '3px', 'border' : 'solid 1px rgb(173, 172, 172)', 'background-color': 'rgb(242, 246, 247)', 'margin-right':'30px'}" [contentStyle]="{'overflow':'visible'}" modal="modal" width="700" [responsive]="true"  [(visible)]="display">
                                 <div class="panel panel-success">
                                         <div class="panel-heading">
-                                            <h5 class="panel-title">Extra Details</h5>           
+                                            <h5 class="panel-title">Quotation Details</h5>           
                                         </div> 
                             <div class="panel-body">
                             <table class="table condensed" style="text-align:left" *ngFor="let quick of mquote | async" scope="row">
@@ -38,6 +38,12 @@ fxLayoutGap.xs="0">
                                   <td width="55%"><b>Class:</b></td>
                                   <td width="45%">{{quick.CLASS_DESCRIP}}</td>
                                   </tr>
+
+                                  <tr>
+                               
+                                        <td width="55%"><b>Branch Agent:</b></td>
+                                        <td width="45%">{{quick.BRANCH_AGENT}}</td>
+                                        </tr>
                                  
                                       <tr>
                                
@@ -75,7 +81,7 @@ fxLayoutGap.xs="0">
                 </div>
                     </p-dialog>
                         <div class="panel-heading">
-                            <h5 class="panel-title">Quotation Details</h5>           
+                            <h5 class="panel-title">Quotation Summary</h5>           
                         </div>
             <div class="reg">  
                     <div class="table-responsive">  
@@ -83,7 +89,7 @@ fxLayoutGap.xs="0">
 
                         <thead class="thead-default" id="listTableHeader">
                            <th  >Quotation Number</th>
-                           <th >Branch Agent</th> 
+                           
                             <th>Period From</th>
                             <th >Period To</th>
                             <th> Action</th>
@@ -93,12 +99,12 @@ fxLayoutGap.xs="0">
                     <tbody>  
                     <tr *ngFor="let pol of myquotations | async" scope="row">  
                             <td>{{pol.POLICY_NO}}</td>  
-                            <td>{{pol.BRANCH_AGENT}}</td>  
+                            
                             <td>{{pol.PERIOD_FROM | date: 'dd/MM/yyyy'}}</td>  
                             <td>{{pol.PERIOD_TO | date: 'dd/MM/yyyy'}}</td>  
                             <td>
                             <div>
-                                   <button class="btn btn-primary" (click)="onSelect($event.target.value); showDialog()" value={{pol.DCON_NO}}>VIEW MORE</button>
+                                   <button class="btn btn-primary" (click)="onSelect($event.target.value); showDialog()" value={{pol.DCON_NO}}>Details </button>
                            </div>
                            </td>
                            

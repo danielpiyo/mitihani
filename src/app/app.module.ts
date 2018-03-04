@@ -40,7 +40,9 @@ import { from } from 'rxjs/observable/from';
 
 import { DialogModule } from 'primeng/dialog';
 import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
-
+import { FileUploadModule } from 'ng2-file-upload';
+import { MorequotationComponent } from './morequotation/index';
+import { MorequotationService } from './morequotation/morequotation.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -51,7 +53,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
         BootstrapModalModule,
         BrowserAnimationsModule,
-
+        FileUploadModule,
         FormsModule,
         HttpClientModule,
         HttpModule,
@@ -76,7 +78,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         RquComponent,
         Register1Component,
         MyquotationComponent,
-        QuotsummaryComponent
+        QuotsummaryComponent,
+        MorequotationComponent
 
 
     ],
@@ -94,6 +97,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         QuotsummaryService,
         MyquotationService,
         LoginService,
+        MorequotationService,
 
         {
             provide: HTTP_INTERCEPTORS,

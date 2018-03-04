@@ -48,31 +48,24 @@
                                                          </td>
 
                                                 </tr> <br>
-                                                <tr class="form-group2">
+                                                <tr class="form-group2" *ngFor="let dcon of risks | async" scope="row">
 
-                                                        <td>Dcon No:</td>
-                                                        <td>
-                                                                <div class="pro_sel">
-                                                                        <select  class="form-control" name="DCON_NO" [(ngModel)]="model.DCON_NO">
-                                                                                <option *ngIf='selectedPolicy.DCON_NO == null' value="0" >--Select--</option>
-                                                                                <option *ngFor="let dcon of risks | async" scope="row"  value= {{dcon.DCON_NO}} >{{dcon.DCON_NO}}</option>
-                                                                              </select>
-                                                                              
+                                                        
+                                                        <td>Policy Reference No:</td>
+                                                        <td name="DCON_NO" [(ngModel)]="model.DCON_NO">
+                                                                <div style="margin-left:20px" class="pro_sel">
+                                                                     <input  type="text"  value= {{dcon.DCON_NO}} />
                                                                 </div> 
                                                          </td>
 
                                                 </tr> <br>
-                                                <tr class="form-group2" >
+                                                <tr class="form-group2" *ngFor="let section of risks | async" scope="row" >
 
                                                                 <td>RiskId</td>
-                                                                <td>
-                                                                                <div class="pro_sel">
-                                                                                                <select  class="form-control" name="RISK_ID" [(ngModel)]="model.RISK_ID">
-                                                                                                        <option *ngIf='selectedPolicy.DCON_NO == null' value="0" >--Select--</option>
-                                                                                                        <option *ngFor="let section of risks | async" scope="row"  value= {{section.RISK_ID}} >{{section.RISK_ID}}</option>
-                                                                                                      </select>
-                                                                                                      
-                                                                                        </div> 
+                                                                <td name="RISK_ID" [(ngModel)]="model.RISK_ID">
+                                                                      <div style="margin-left:20px" class="pro_sel" >
+                                                                           <input type="text"  value= {{section.RISK_ID}} />
+                                                                       </div> 
                                                                 </td>                                                                
         
                                                         </tr>

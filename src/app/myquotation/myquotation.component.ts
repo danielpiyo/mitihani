@@ -10,8 +10,12 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { AlertService } from '../_services/index';
 //import { MatDialog } from '@angular/material';
+import { MorequotationService } from '../morequotation/morequotation.service';
 import { Overlay } from 'ngx-modialog';
 import {ModalModule} from 'ng2-modal';
+
+
+
 @Component({
     moduleId: module.id.toString(),
     selector: 'myquotation.component',
@@ -38,6 +42,7 @@ export class MyquotationComponent implements OnInit {
         private router: Router,
         private alertService : AlertService,
         private _myquotationService: MyquotationService,
+        private _morequotationService : MorequotationService,
         private userService: UserService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.currentQuote = JSON.parse(localStorage.getItem('currentQuote'));
@@ -64,7 +69,8 @@ export class MyquotationComponent implements OnInit {
         this.mquote = this._myquotationService.getMore(this.currentUser.cust_code,dcon_no)  
          this.dconNo = dcon_no;
   
-     }
+     } 
+    
          
      display: boolean = false;
 

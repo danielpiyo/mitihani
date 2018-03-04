@@ -15,6 +15,9 @@ const oracledb = require('oracledb');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require(__dirname + '/config.js');
+const multer = require('multer');
+var cors = require('cors');    
+app.use(cors({credentials: true, origin: 'http://localhost:4200'}));
 // Use body parser to parse JSON body
 router.use(bodyParser.json());
 
@@ -24,6 +27,17 @@ const connAttrs = {
     "connectString": "173.255.200.221/XE"
 }
 
+const store = multer.diskStorage ({
+    destination: function(req,file, cb){
+        cb(null, './uploads');},
+        filename: function(req,file,cb){
+            cb(null, Date.now() + '.' + file.originalname)
+        }
+    }
+);
+
+const upload = multer({storage:store}).single('file');
+
 // Http Method: GET
 // URI        : /user_profiles
 // Read all the user profiles
@@ -31,6 +45,16 @@ router.get('/', function (req, res) {
     res.sendfile('/')
 });
 
+
+router.post('/upload', function(req, res, next){
+    upload(res, req, function(err){
+        if(err){
+            return res.status(501).json({error:err});
+        }
+        return res.json({originalname:req.file.originalname, uploadname:req.file.filename});
+    });
+
+});
 
 ///quatation products listings
 

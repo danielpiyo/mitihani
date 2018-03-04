@@ -14,7 +14,7 @@ import { ClaimsComponent } from './claims/index';
 import { ProfileComponent } from './profile/index';
 
 import { RquComponent } from './rqu/index';
-
+import { MorequotationComponent } from './morequotation/index';
 import { AuthGuard } from './_guards/index';
 import { MyquotationComponent } from './myquotation/index';
 
@@ -31,6 +31,7 @@ const appRoutes: Routes = [
             { path: 'policies', component: PoliciesComponent, canActivate: [AuthGuard] },
             { path: 'vquery', component: VqueryComponent, canActivate: [AuthGuard] },
             { path: 'query', component: QueryComponent, canActivate: [AuthGuard] },
+            { path: 'more', component: MorequotationComponent , canActivate: [AuthGuard] },
             { path: 'rqu', component: RquComponent, canActivate: [AuthGuard] }]
     },
     { path: 'login', component: LoginComponent },

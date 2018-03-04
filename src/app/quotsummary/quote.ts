@@ -16,8 +16,7 @@ export class Quote {
     insured: String;
     currency_code: String;
     
-    constructor()
-    { }
+    
     
 
     
