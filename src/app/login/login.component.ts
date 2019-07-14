@@ -32,11 +32,11 @@ export class LoginComponent implements OnInit {
 
     login() {
         this.loading = true;
-        this.loginSubscription = this.loginService.login(this.model.email, this.model.password)
+        this.loginSubscription = this.loginService.login(this.model.username, this.model.password)
             .subscribe(
             data => {
                 this.alertService.success('Sign in successful', true);
-                this.router.navigate([this.returnUrl]);
+                this.router.navigate(['/profile']);
             },
             error => {
                 this.alertService.error(error);

@@ -13,9 +13,6 @@ import { NgModule } from '@angular/core';
     templateUrl: 'app.component.html'
     
     
-    
-     
-   
 })
 //@NgModule({
  //   declarations: <any>[ ClaimsComponent]
@@ -23,6 +20,13 @@ import { NgModule } from '@angular/core';
 //})
 export class AppComponent {
     
+    myTime : Date;
+    year: number;
+
+    constructor(){
+        this.myTime = new Date();
+        this.year = this.myTime.getFullYear();
+    }
  }
 
 

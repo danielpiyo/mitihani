@@ -1,5 +1,4 @@
 ﻿import { Component, OnInit } from '@angular/core';
-
 import { User } from '../_models/index';
 import { UserService } from '../_services/index';
 
@@ -12,7 +11,8 @@ import { UserService } from '../_services/index';
 export class HomeComponent implements OnInit {
     currentUser: User;
     users: User[] = [];
-    
+    toggleMenu = false;
+
 
     constructor(private userService: UserService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -23,16 +23,20 @@ export class HomeComponent implements OnInit {
       
     }    
 
-    deleteUser(id: number) {
-        this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
+
+    onToggleMenu(){
+        if(this.toggleMenu === true){
+            this.toggleMenu = false;
+        }
+        else{
+            this.toggleMenu = true;
+        }
     }
+    
 
     private loadAllUsers() {
         this.userService.getAll().subscribe(users => { this.users = users; });
     }
-    uploadFile(event){
-        let elem = event.target;
-       // console.log(elem);
-    }  
+    
  
     }

@@ -5,17 +5,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 
-import { fakeBackendProvider } from './_helpers/index';
-import { QuatationsService } from './quatations/quatations.service';
+//import { fakeBackendProvider } from './_helpers/index';
+
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
-import { ProductsService } from './products/products.service';
-import { IalertService } from './products/ialert.service';
+import { ClassLevelService } from './class/classLevel.service';
+import { IalertService } from './class/ialert.service';
 import { Register1Service } from './register1/register1.service';
-import { VqueryService } from './vquery/vquery.service';
-import { PoliciesService } from './policies/policies.service'
+
+import { QuestionService } from './question/question.service'
 import { AlertComponent } from './_directives/index';
-import { ClaimsComponent } from './claims/index';
+
 import { AuthGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
 import { AlertService, UserService } from './_services/index';
@@ -23,81 +23,94 @@ import { LoginService } from './login/login.service';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { Register1Component } from './register1/index';
-import { VqueryComponent } from './vquery/index';
-import { ProductsComponent } from './products/index';
-import { QuatationsComponent } from './quatations/index';
-import { PoliciesComponent } from './policies/index';
-import { QueryComponent } from './query/index';
-import { MyquotationComponent } from './myquotation/index';
-import { MyquotationService } from './myquotation/myquotation.service';
+import { IncompleteComponent} from './incomplete/index';
+import { ClassLevelComponent } from './class/index';
+import { IncompleteService}from './incomplete/incomplete.service';
+import { QuestionComponent } from './question/index';
+
+import { EditQComponent } from './editquestion/index';
+import { EditQService } from './editquestion/editQ.service';
 import { ProfileComponent } from './profile/index';
-import { RquComponent } from './rqu/index';
-import { QuotsummaryComponent } from './quotsummary/index';
-import { QuotsummaryService } from './quotsummary/quotsummary.service';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { from } from 'rxjs/observable/from';
-
-import { DialogModule } from 'primeng/dialog';
+import { DialogModule } from 'primeng/primeng';
 import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
-import { FileUploadModule } from 'ng2-file-upload';
-import { MorequotationComponent } from './morequotation/index';
-import { MorequotationService } from './morequotation/morequotation.service';
+import { PagerService } from './_services/index';
+import { CompleteComponent} from './complete/index';
+import { CompleteService} from './complete/complete.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatListModule } from '@angular/material/list';
+import {
+    MatButtonModule, MatIconModule, MatInputModule, MatSelectModule, MatSliderModule,
+    MatToolbarModule, MatSnackBarModule, MatCardModule, MatSlideToggleModule, MatDatepickerModule, MatNativeDateModule
+} from "@angular/material";
 
 
 @NgModule({
     imports: [
         BrowserModule,
-
+        MatExpansionModule,
+        MatTabsModule,
+        MatListModule,
+        MatSnackBarModule,
+        MatDatepickerModule,
         BootstrapModalModule,
         BrowserAnimationsModule,
-        FileUploadModule,
+        MatNativeDateModule,
+        MatButtonModule,
+        MatIconModule,
+        MatInputModule,
+        MatSelectModule,
+        MatSliderModule,
+        MatToolbarModule,
+        MatCardModule,
+        MatSlideToggleModule,
         FormsModule,
         HttpClientModule,
         HttpModule,
         FlexLayoutModule,
-
-        DialogModule,
         ReactiveFormsModule,
-        routing
+        routing,
+        DialogModule
+
     ],
     declarations: [
         AppComponent,
         AlertComponent,
         HomeComponent,
         LoginComponent,
-        VqueryComponent,
-        ProductsComponent,
-        QuatationsComponent,
-        PoliciesComponent,
-        QueryComponent,
+         IncompleteComponent,
+        ClassLevelComponent,
+        CompleteComponent,
+        QuestionComponent,
+
         ProfileComponent,
-        ClaimsComponent,
-        RquComponent,
+
         Register1Component,
-        MyquotationComponent,
-        QuotsummaryComponent,
-        MorequotationComponent
+        EditQComponent,
+
+
 
 
     ],
     providers: [
         AuthGuard,
         AlertService,
-        QuatationsService,
+        IncompleteService,
         UserService,
-        VqueryService,
-        PoliciesService,
-        ProductsService,
+        CompleteService,
+        QuestionService,
+        ClassLevelService,
         IalertService,
-
         Register1Service,
-        QuotsummaryService,
-        MyquotationService,
+
+        EditQService,
         LoginService,
-        MorequotationService,
+
+        PagerService,
 
         {
             provide: HTTP_INTERCEPTORS,
@@ -106,7 +119,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         },
 
         // provider used to create fake backend
-        fakeBackendProvider
+       // fakeBackendProvider
     ],
     bootstrap: [AppComponent]
 })

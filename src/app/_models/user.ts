@@ -17,6 +17,12 @@
     occup_description:String;
     contact_person: string;
     gender: string;
-    category: String;
+    entity_category: String;
     product_name: String;
+    entity_sys_id: number;  
+    surname: String;
+    other_names:String;
+    mobile_number: string;   
+    dob: Date;
+    breif_narration: String;
 }

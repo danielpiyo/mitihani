@@ -1,0 +1,170 @@
+﻿<div *ngIf="mode == 'general'" class="container panel panel-success">
+
+            <div class="panel-heading" >
+                    <h5 class="panel-title">Question Reviewing</h5>
+            </div> <br>
+        <mat-card *ngFor="let question of questionPagedItems" style="text-align: left">
+                <div> Question Number:
+                        <br>
+                        <input class="form-control2" type="ext" value="{{question.QUESTION_SEQUENCE}}" readonly/>
+                    </div>
+           <div *ngIf="question.PASSAGE_HEADER !== 'null'">
+                <div> Passage header/ Question title:
+                        <br>
+                        <input class="form-control2" type="text" value="{{question.PASSAGE_HEADER}}" readonly/>
+                    </div>
+           </div>
+           <div> Question Naration:
+                <br>
+                <textarea class="form-control21"  cols="20" rows="5" readonly>{{question.QUESTION_NARRATION}}</textarea>
+        
+            </div>
+    
+            <div> Question Passage. <i>(if is has)</i>
+                    <br>
+                    <textarea class="form-control21"  cols="30" rows="10" readonly>{{question.QUESTION_PASSAGE}}</textarea>
+                </div>
+    
+                <div style="text-align: center">
+                      
+                        <ul *ngIf="questionPager.pages && questionPager.pages.length" class="pagination">
+                          <li [ngClass]="{disabled:questionPager.currentPage === 1}">
+                              <a (click)="setPage(1)" (click)="display=false">First</a>
+                          </li>
+                          <li [ngClass]="{disabled:questionPager.currentPage === 1}">
+                              <a (click)="setPage(questionPager.currentPage - 1)" (click)="display=false">  <<  </a>
+                          </li>
+                          <li *ngFor="let page of questionPager.pages" [ngClass]="{active:questionPager.currentPage === page}">
+                              <a (click)="setPage(page)">{{page}}</a>
+                          </li>
+                          <li [ngClass]="{disabled:questionPager.currentPage === questionPager.totalPages}">
+                              <a (click)="setPage(questionPager.currentPage + 1)" (click)="display=false"> >> </a>
+                          </li>
+                          <li [ngClass]="{disabled:questionPager.currentPage === questionPager.totalPages}">
+                              <a (click)="setPage(questionPager.totalPages)" (click)="display=false">Last</a>
+                          </li>
+                      </ul> <hr>
+                      <button class="btn btn-primary" (click)="editQuestion(question.PQQ_ID, question.QUESTION_SEQUENCE, question.PASSAGE_HEADER, question.QUESTION_NARRATION, question.QUESTION_PASSAGE)">Edit Question {{question.QUESTION_SEQUENCE}}</button>
+                     
+                         <button [disabled]="loading" class="btn btn-primary" (click)="onSelect(question.PQQ_ID); showDialog()">View Answers</button>
+                       
+                      </div>
+                      
+        </mat-card>
+       <br>
+        <p-dialog [style]="{'margin-left':'30px', 'border-radius': '3px', 'border' : 'solid 1px rgb(173, 172, 172)', 'background-color': 'rgb(242, 246, 247)', 'margin-right':'30px'}" [contentStyle]="{'overflow':'visible'}" modal="modal" width="80%" [responsive]="true"  [(visible)]="display">
+                <div class="table-responsive panel panel-success">
+                        <div class="panel-heading">
+                            <h5 class="panel-title">Existing Answers </h5>           
+                        </div> 
+                        <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+                      />
+            <table class="table" border="1" cellpadding="2" cellspacing="1">
+                <thead class="thead-default" id="listTableHeader">
+                    <th>Option</th>
+                    <th>Answwer</th>
+                    <th>Explanation</th>
+                    <th>Correct Answer</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let answer of answers">
+                        <td>{{answer.ANSWER_ID}}</td>
+                        <td>{{answer.ANSWER_NARRATION}}</td>
+                        <td>{{answer.CORRECT_YN_EXPLANATION}}</td>
+                        <td>{{answer.CORRECT_YN}}</td>
+                        <td> <button class="btn btn-primary" (click)="editAnswers(answer.PQQ_ID, answer.PQA_ID, answer.ANSWER_ID, answer.ANSWER_NARRATION, answer.CORRECT_YN, answer.CORRECT_YN_EXPLANATION)" >Edit</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        
+        </div>
+        <p-footer>
+                <button type="button" pButton icon="fa-check" (click)="display=false" class="btn btn-primary">Close</button>
+                
+         </p-footer>
+        </p-dialog>
+    
+    
+</div>
+
+<div *ngIf="mode == 'edit'" class="container panel panel-info" style="text-align: left">
+        <div class="panel-heading" >
+                <h5 class="panel-title">Editing Question</h5>
+        </div> <br>
+        <div class="container panel panel-success" >
+                <div class="panel-heading" >
+            <div>Class Level: <strong>{{selectedQuestion.class_level_code}}</strong></div>
+            <div style="width: 60%">Subject: <strong>{{selectedQuestion.subject_code}}</strong></div>
+            <div>Question No: <strong>{{editNo}}</strong></div>
+            </div>
+        </div> 
+<form class="container panel panel-success" name="form" (ngSubmit)="updateSubmit()" #f="ngForm" novalidate >
+
+    <div> Passage header/ Question Title:
+        <br>
+        <input class="form-control2" type="text" value="kenya" name="passage_header" [(ngModel)]="quickQuestionEdit.passage_header">
+    </div>
+    <div> Question Narration:
+        <br>
+        <textarea class="form-control21" name="question_narration" [(ngModel)]="quickQuestionEdit.question_narration" cols="20" rows="5"></textarea>
+
+    </div>
+    <div> Question Passage. <i>(if it has)</i>
+        <br>
+        <textarea class="form-control21" name="question_passage" [(ngModel)]="quickQuestionEdit.question_passage" cols="30" rows="10"></textarea>
+    </div>
+    <hr>
+    <div style="width: 80%">
+            <button [disabled]="loading" class="btn btn-primary">Update Question</button> ||
+        <button class="btn btn-primary" (click)="mode = 'general'">Cancel</button>
+      
+    </div>
+   
+           
+        
+</form>
+</div>
+
+<mat-card  style="text-align: left" *ngIf="mode == 'answeredit'" class="container panel panel-success">
+             <div class="panel-heading" >
+              <h5 class="panel-title">Editing Question</h5>
+            </div> <br>
+
+    <form name="form" (ngSubmit)="answerUpdate()" #f="ngForm" novalidate>
+
+        <div> Answer Option (e.g A, B ...)
+            <br>
+            <input class="form-control2" type="text" name="answer_id" [(ngModel)]="quickAnswerEdit.answer_id">
+        </div>
+        <div> Answer:
+            <br>
+            <textarea class="form-control21" name="answer_narration" [(ngModel)]="quickAnswerEdit.answer_narration" cols="10" rows="5"></textarea>
+
+        </div>
+        <div> Answer Explanation:
+            <br>
+            <textarea class="form-control21" name="correct_yn_explanation" [(ngModel)]="quickAnswerEdit.correct_yn_explanation" cols="30"
+                rows="10"></textarea>
+        </div>
+        <div>
+            Correct Answer?
+            <select name="correct_yn" [(ngModel)]="quickAnswerEdit.correct_yn">
+                <option value="Y">Yes</option>
+                <option value="N">No</option>
+            </select>
+        </div>
+      <hr>
+
+        <div >
+                <button [disabled]="loading" class="btn btn-primary">Update Answers</button> ||
+                <button class="btn btn-primary" (click)=" mode = 'general'">Cancel</button>
+           
+        </div>
+    </form>
+    
+</mat-card>
+
+
+
+   
+    

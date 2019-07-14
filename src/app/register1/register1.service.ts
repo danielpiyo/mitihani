@@ -11,7 +11,7 @@ import { Register1 } from './register1';
 
 @Injectable()
 export class Register1Service {
-apiUrl: string = "http://173.255.200.221:4000/api/reg";// Web API URL
+apiUrl: string = "https://yourLinktoendpoint";// Web API URL
 constructor(private _http: Http) { }  
 
 

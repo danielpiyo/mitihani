@@ -1,87 +1,97 @@
-﻿<style type="text/css">
-    table,  td {
-       
-        font-family: "Lucida Sans Unicode", "Lucida Grande", "Segoe Ui";
-        font-size: 13.6px;
-        border-color: rgb(187, 185, 185);
-        border-radius: 2px;
-    }   
-</style>
-
-<div class="query"> 
-        <div class="container"
-                fxLayout
+﻿<div>
+        <mat-card class="panel panel-info">
+                <div class="panel-heading"
+                 fxLayout
                 fxLayout.xs="column"
                 fxLayoutAlign="right"
-                fxLayoutGap="2px"
-                fxLayoutGap.xs="0"> 
+                fxLayoutGap="5px"
+                fxLayoutGap.xs="0">
 
-                <p class="nav1"></p>
-
-           <div class="item item-1" fxFlex >
-                <div class="inner1">
-                                <div class="panel panel-success" style="width:97%; margin-left:10px">
-                                                <div class="panel-heading">
-                                                    <h5 class="panel-title"></h5>           
-                                                </div> 
-                        <form action="" class="tabb">
-                            <table class="tabb" border="1" cellpadding="2" cellspacing="1" >
-                                <tr class="form-group1">
-                                    <td>Name:</td>
-                                    <td><div class="prof">{{currentUser.first_name}}  {{currentUser.last_name}}</div></td>
-                                </tr><br>
-                                <tr>
-                                        <td>Mobile No:</td>
-                                        <td><div class="prof">{{currentUser.mobile_no}}</div></td>
-                                </tr><br> 
-                                <tr>
-                                        <td>Id Type:</td>
-                                        <td><div class="prof">{{currentUser.id_type}}</div></td>
-                                </tr><br>
-                                <tr>
-                                        <td>Id No:</td>
-                                        <td><div class="prof">{{currentUser.id_number}}</div></td>
-                                </tr><br>
-                                <tr>
-                                        <td>Email:</td>
-                                        <td><div class="prof">{{currentUser.email}}</div></td>
-                                </tr><br>
-                                <tr>
-                                        <td>Postal Adress:</td>
-                                        <td><div class="prof">{{currentUser.postal_address}}   --  {{currentUser.postal_code}}</div></td>
-                                </tr><br>
-                                <tr>
-                                        <td>Town:</td>
-                                        <td><div class="prof">{{currentUser.town}}</div></td>
-                                </tr><br>
-                                <tr>
-                                        <td>Country:</td>
-                                        <td><div class="prof">{{currentUser.country}}</div></td>
-                                </tr><br>
-                                <tr>
-                                        <td>Contact Person:</td>
-                                        <td><div class="prof">{{currentUser.contact_person}}</div></td>
-                                </tr><br>
-                                <tr>
-                                        <td>Pin No:</td>
-                                        <td><div class="prof">{{currentUser.pin_number}}</div></td>
-                                </tr><br>
-                                <tr>
-                                        <td>Occupation:</td>
-                                        <td><div class="prof">{{currentUser.occup_description}}</div></td>
-                                </tr><br>
-                                <tr>
-                                        <td>Gender:</td>
-                                        <td><div class="prof">{{currentUser.gender}}</div></td>
-                                </tr>
-                            </table>
-                        </form>
+                <div class="item item-1" fxFlex > 
+                                <div  class="panel-title" style="text-align: left"> Welcome {{currentUser.surname}} </div>
                 </div>
-                </div>
-          </div>
-          <div class="item item-3" fxFlex="0%"> </div>
 
-          <div class="item item-2" fxFlex="0%" fxFlexOrder="3">   </div> 
+                <div class="item item-2" fxFlex="20%"> </div>
+
+          <div class="item item-3" fxFlex="40%" fxFlexOrder="3">   
+                        <div  class="panel-title" style="text-align: right"> Logged in as: {{currentUser.entity_category}}</div>
+          </div> 
     
-    </div>
+
+                  
+                </div>
+                <hr>
+                <mat-card-content>
+                  <mat-tab-group>
+                    <mat-tab label="Personal Details">
+                      <hr>
+                      <div class="container panel panel-success">
+          
+          
+                        <div class="panel-heading">
+                          <h5 class="panel-title" style="text-align: left">Personal Details</h5>
+                        </div>
+                        <br>
+                        <div style="text-align:left">
+          
+                        <mat-card>
+                                <div>Full Name: {{currentUser.surname}} {{currentUser.other_names}}</div>
+                                <br>
+                                <div>Email: {{currentUser.email}}</div>
+                                <br>
+                                <div>First Name: {{currentUser.surname}}</div>
+                                <br>
+                        
+                                <div>Birth Date: {{currentUser.dob | date: 'dd/MM/yyyy'}}</div>
+                        
+                        </mat-card>
+                          <br>
+                        </div>
+                      </div>
+                    </mat-tab>
+                    <mat-tab label="Questions Summary">
+                      <hr>
+                      <div class="container panel panel-success">
+          
+          
+                        <div class="panel-heading">
+                          <h5 class="panel-title" style="text-align: left">Question Details</h5>
+                        </div>
+                        <br>
+                        <h1>Coming Soon</h1>
+                        <p>...</p>
+                      </div>
+                    </mat-tab>
+                    <mat-tab label="Contact">
+                      <hr>
+                      <div class="container panel panel-success">
+          
+          
+                        <div class="panel-heading">
+                          <h5 class="panel-title" style="text-align: left">Contact Details</h5>
+                        </div>
+                        <br>
+                        <div style="text-align:left">
+          
+                        <mat-card>
+                            <div>Town: {{currentUser.town}}</div>
+                            <br>
+                            <div>Country: {{currentUser.country}}</div>
+                            <br>
+                            <div>Email: {{currentUser.email}}</div>
+                            <br>
+                            <div>Phone: {{currentUser.mobile_number}}</div>
+                        </mat-card>
+                         
+                          <br>
+                        </div>
+                      </div>
+                    </mat-tab>
+                  </mat-tab-group>
+          
+                </mat-card-content>
+                <small style="text-align: center">
+                    Your Details as at:  {{myTime | date : 'dd/MM/yyyy, h:mm a'}}
+                 </small>
+              </mat-card>
 </div>

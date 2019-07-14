@@ -1,0 +1,95 @@
+﻿<div *ngIf="mode == 'question'" style="text-align: left" class="container panel panel-info">
+        <div class="panel-heading" >
+                <h5 class="panel-title">Question Entry <i>(one at a time)</i></h5>
+        </div> <br>
+            <div class="container panel panel-success">
+                    <div class="panel-heading" >
+                <div>Class Level: <strong>{{selectedQuestion.class_level_code}}</strong></div>
+                <div style="width: 60%">Subject: <strong>{{selectedQuestion.subject_code}}</strong></div>
+                <div>Question Entry No: <strong>{{selectedQuestion.pqh_id}}</strong></div>
+                </div>
+            </div> 
+    <form class="container panel panel-success" name="form" (ngSubmit)="questionSubmit()" #f="ngForm" novalidate >
+
+        <div> Question Number:
+            <br>
+            <input class="form-control2" type="number" name="question_sequence" [(ngModel)]="quickQuestion.question_sequence">
+        </div>
+        <div> Passage header / Question instruction :
+            <br>
+            <input class="form-control2" type="text" name="passage_header" [(ngModel)]="quickQuestion.passage_header">
+        </div>
+        <div> Question Narration:
+            <br>
+            <textarea class="form-control21" name="question_narration" [(ngModel)]="quickQuestion.question_narration" cols="20" rows="5"></textarea>
+
+        </div>
+        <div> Question Passage. <i>(if it has passage)</i> 
+            <br>
+            <textarea class="form-control21" name="question_passage" [(ngModel)]="quickQuestion.question_passage" cols="30" rows="10"></textarea>
+        </div>
+        <hr>
+        <div style="width: 80%">
+                <button [disabled]="loading" class="btn btn-primary">Save Question</button> ||
+            <button class="btn btn-primary" (click)="backToHeader()">Back to Classes</button>
+            
+        </div>
+       
+               
+            
+    </form>
+
+    
+</div>
+
+
+
+<div *ngIf="mode == 'answer'" class="container panel panel-info">
+        <div class="panel-heading" >
+                <h5 class="panel-title">Answers for the Question</h5>
+        </div> <br>
+        <div class=" container panel panel-danger">
+                <div class="panel-heading" >  
+           
+            <div style="text-align: right"><button class="btn btn-primary" (click)="setQuiz(selectedQuestion.pqh_id, currentUser.surname)">Set This Quiz</button></div>
+            </div>
+        </div> 
+
+    <mat-card  style="text-align: left">
+
+
+        <form name="form" (ngSubmit)="answerSubmit()" #f="ngForm" novalidate>
+
+            <div> Answer Option (e.g A, B ...)
+                <br>
+                <input class="form-control2" type="text" name="answer_id" [(ngModel)]="quickAnswer.answer_id">
+            </div>
+            <div> Answer:
+                <br>
+                <textarea class="form-control21" name="answer_narration" [(ngModel)]="quickAnswer.answer_narration" cols="10" rows="5"></textarea>
+
+            </div>
+            <div> Answer Explanation:
+                <br>
+                <textarea class="form-control21" name="correct_yn_explanation" [(ngModel)]="quickAnswer.correct_yn_explanation" cols="30"
+                    rows="10"></textarea>
+            </div>
+            <div>
+                Correct Answer?
+                <select name="correct_yn" [(ngModel)]="quickAnswer.correct_yn">
+                    <option value="Y">Yes</option>
+                    <option value="X">No</option>
+                </select>
+            </div>
+          <hr>
+
+            <div >
+                    <button [disabled]="loading" class="btn btn-primary">Submit Answers</button> ||
+                    <button class="btn btn-primary" (click)=" mode = 'question'">Add Question</button>
+            
+            </div>
+        </form>
+        
+    </mat-card>
+</div>
+

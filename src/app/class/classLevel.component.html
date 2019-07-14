@@ -1,0 +1,78 @@
+﻿<div class="col-md-12 tab container panel panel-info">
+                       
+
+        <div class="panel-heading" >
+                <h5 class="panel-title">Setting Quiz</h5>
+        </div> <br>
+        <mat-accordion *ngIf="mode == 'normal'" class="panel panel-success">
+                <mat-expansion-panel *ngFor="let classs of classLevels" (click)="goToClassDetailsPage(classs.CODE_ID)">
+                        <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                        {{classs.CODE_DESCRIPTION}}
+                                </mat-panel-title>
+
+                        </mat-expansion-panel-header>
+                        
+                        <mat-card *ngFor="let clas of classDetails" (click)="goToSubjectPage(clas.CODE_ID)">
+
+                                <mat-card-header class="menu_links ">
+
+                                      {{clas.CODE_DESCRIPTION}}
+
+                                </mat-card-header>
+
+
+                        </mat-card>
+
+                </mat-expansion-panel>
+        </mat-accordion>
+
+        <div *ngIf="mode == 'start'" style="text-align: left;" class="panel panel-success">            
+           
+            <form name="form" (ngSubmit)="submit()" #f="ngForm" novalidate>
+                    <div>Select Subject: <br>
+                        <div>
+                            <select class="form-control2" (change)="onSelect($event.target.value)" name="subject_code" [(ngModel)]="quickHeader.subject_code">
+                                <option value="0">--Select--</option>
+                                <option *ngFor="let subject of allSubjects" value={{subject.SUBJECT_CODE}}>{{subject.SUBJECT_CODE}}</option>
+                            </select>
+                          
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="panel panel-success">
+                        <div >
+                            Class Level: 
+                            <input class="form-control2" type="text" name="class_level_code" [(ngModel)]="quickHeader.class_level_code" readonly/>
+                            
+                        </div>
+                        <br>
+                        <div>Select Brand: <br>
+                                <div>
+                                    <select class="form-control2" (change)="onSelect($event.target.value)" name="brand" [(ngModel)]="quickHeader.brand">
+                                        <option value="0">--Select--</option>
+                                        <option *ngFor="let brand of allBrand" value={{brand.CODE_ID}}>{{brand.CODE_DESCRIPTION}}</option>
+                                    </select>
+                                  
+                                </div>
+                            </div>
+                            <br>
+                        <div >
+                            Quiz Description: <br>
+                           <textarea class="form-control21" name="quiz_description"  [(ngModel)]="quickHeader.quiz_description" cols="30" rows="5"></textarea>
+                           
+                        </div>
+                    
+                    </div>  
+                   <div>
+                          <button [disabled]="loading" class="btn btn-primary">Save</button> ||
+                        <button class="btn btn-primary" (click)="mode = 'normal'">Cancel</button>
+                      
+                    </div>
+            </form>  
+          
+        </div>
+
+       
+</div>
+ 

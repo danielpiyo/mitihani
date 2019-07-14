@@ -34,6 +34,7 @@ export class Register1Component {
             data => {
                 this.alertService.success('Registration successful', true);
                 this.router.navigate(['/login']);
+                console.log('Data', data._body);
             },
             error => {
                 this.alertService.error(error);

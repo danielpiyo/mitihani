@@ -12,27 +12,18 @@ import { Subscription } from 'rxjs/Subscription';
 export class ProfileComponent implements OnInit {
     currentUser: User;
     users: User[] = [];
-    usersSubscription: Subscription;
+    myTime : number;
 
     constructor(private userService: UserService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     ngOnInit() {
-        this.loadAllUsers();
+      
+        this.myTime = Date.now();
     }
 
-    deleteUser(id: number) {
-        this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
-    }
+    
 
-    private loadAllUsers() {
-        this.usersSubscription = this.userService.getAll().subscribe(users => { this.users = users; });
-    }
-
-    ngonDestroy(){
-        if(this.usersSubscription){
-            this.usersSubscription.unsubscribe();
-        }
-    }
+    
 }

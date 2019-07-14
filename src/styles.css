@@ -1,4 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.toggleMenuStyle {
+    display: block;
+}
+.logo{
+    border-radius:60px;
+     border:solid 2px gray;
+     background-color: rgb(178, 226, 226);
+     margin-top: -5px;
+     text-align: center;
+     
+  }
 .box{
     font-size: 100%;
     text-align:left; 
@@ -132,7 +145,7 @@ li{
 }
 .inner{
     max-width: auto;
-    min-height: 400px;
+    min-height: 500px;
     max-height: auto;  
     border-left: 4px solid rgb(194, 134, 43);
     margin-left: 180px;  
@@ -175,7 +188,7 @@ li{
 .user{
     position:absolute;
     padding-top: 5px;
-    width: 232px;
+    width: auto;
     height: 95%;
     text-align: -webkit-left;
     vertical-align: top;
@@ -407,8 +420,8 @@ height: 34px;
 }
 .form-control2{
     display: block;
-    margin-left: 20px;
-    width: 80%;
+    margin-left: 2px;
+    width: 40%;
     height: 34px;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -419,6 +432,21 @@ height: 34px;
     border: 1px solid #ccc;
     border-radius: 2px;
     }
+
+    .form-control21{
+        display: block;
+        margin-left: 2px;
+        width: 80%;
+        height: 100px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #555;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        }
 
 .form-control{
 display: block;
@@ -554,12 +582,34 @@ border-radius: 4px;
     line-height: 1.5;
     width:80px;
 }
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #2cc9d4;
+}
+.navbar-inverse {
+    background-color: rgb(0, 238, 255);
+   
+}
+
+.hero_content {
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.75);
+    color: #005FA6;
+    font-weight: 700;
+    font-size: 34px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.navbar {
+    position: relative;
+    min-height: 50px;
+    max-height: auto;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+}
 .col-md-3 {
-    float: left;
-    width: 23.33%;
+    float: left;   
     padding: 10px;
-    min-height: 495px;
-    max-height: 550px;
+    min-height: 250px;
+    max-height: auto;
     border: solid 1px;
     border-radius: 4px;
     border-color: #7d7f80;
@@ -569,8 +619,8 @@ border-radius: 4px;
     float: right;
     width: 76.67%;
     padding: 10px;
-    min-height: 480px;
-    max-height: 500px;
+    min-height: 515px;
+    max-height: 515px;
     margin-top: 5px;
     border: solid 1px;
     border-radius: 4px;
@@ -578,6 +628,26 @@ border-radius: 4px;
     overflow-y: scroll;
      white-space: nowrap;
 }
+
+.smallH{
+    min-height: 150px;
+    max-height: 320px;
+    overflow-y: scroll;
+     white-space: nowrap;
+}
+.col-md-92 {
+    float: right;   
+    padding: 10px;
+    min-height: 200px;
+    max-height: auto;
+    margin-top: 5px;
+    border: solid 1px;
+    border-radius: 4px;
+    border-color: #7d7f80;
+   
+     white-space: nowrap;
+}
+
 .query{
     margin-left: 25px;
     margin-right: 25px;
@@ -640,6 +710,23 @@ body {
     font-family: "segoe-ui", "open-sans", tahoma, arial;
     padding: 0;
     margin: 0;
+}
+.body{
+    background: #3d83e4;
+    background: -webkit-linear-gradient(bottom right, #3d83e4 0%, #54eef2 100%);
+    border-radius: 6px;
+    background: linear-gradient(to top left, #3d83e4 0%, #54eef2 100%);
+    position: relative;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    min-height: 250px;
+    max-height: auto;
+    margin-top: 50px;
+    overflow: hidden;
+}
+.body1{
+    margin-top: 40px;
 }
 
 legend

@@ -11,16 +11,13 @@ import { User } from './login';
 
 @Injectable()
 export class LoginService {
-    apiUrl: string = "http://173.255.200.221:4000/api/login";
+    apiUrl: string = "https://www.api.cloudplace.org:4000/api/loginAdminapp";
     constructor(private http: HttpClient) { }
-    //private RegenerateData = new Subject<number>();  
-    //RegenerateData$ = this.RegenerateData.asObservable();  
-    //AnnounceChange(mission: number) {  
-   // this.RegenerateData.next(mission);}
+  
     
 
-    login(email: string, password: string) {
-        return this.http.post<any>(this.apiUrl, { email: email, password: password })
+    login(username: string, password: string) {
+        return this.http.post<any>(this.apiUrl, { username: username, password: password })
             .map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {

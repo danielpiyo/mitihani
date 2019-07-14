@@ -1,0 +1,38 @@
+﻿<div class="container panel panel-info">
+          
+
+        <div *ngIf="mode == 'complete'">
+                <div class="container panel panel-info" *ngFor="let complete of completeQuestions" style="text-align: left">
+                      
+                        <div class="panel-heading">
+                                <div>Class Level:
+                                        <strong>{{complete.CLASS_LEVEL_CODE}}</strong>
+                                </div>
+                                <div style="width: 60%">Subject:
+                                        <strong>{{complete.SUBJECT_CODE}}</strong>
+                                </div>
+                                <div>Prepared Date:
+                                        <strong>{{complete.PREPARED_DATE | date: 'dd/MM/yyyy'}}</strong>
+                                </div>
+                                <button class="btn btn-primary" (click)="viewDetails(complete.LINKED_QH_ID, complete.QUIZ_DESCRIPTION)">
+                                View Details</button>
+                        </div>
+                </div>
+
+        </div>
+
+        <div *ngIf="mode == 'details'" style="text-align: left" class="panel panel-info">
+                 <div class="panel-heading">
+                     <h5 class="panel-title">Question Details</h5>
+                 </div>
+                <div>
+                        New Quiz No: <strong>{{selectQuizNo}}</strong>
+                </div> <br>
+                <div>
+                        Quiz Description: <strong> {{selectedDescription}}</strong>
+                </div> <hr>
+        <div style="text-align: center"> <button class="btn btn-primary" (click)="mode = 'complete'">Close</button></div>
+        </div>
+
+       
+</div>

@@ -2,3 +2,4 @@
 //export * from './authentication.service';
 export * from './user.service';
 //export * from './modal.service';
+export * from './pagerService';

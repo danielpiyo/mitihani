@@ -1,68 +1,59 @@
-﻿<div class="">
+﻿<div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="right" fxLayoutGap="2px" fxLayoutGap.xs="0">
 
-    <div class="col-md-3 tab container">
+    <div class="item item-1 col-md-3" fxFlex>
         <div class="wrapper tab">
-        
-            <nav id="sidebar">
-                <div class=""></div>
-
-                <div class="user">
-                    <div class="nav2">
-                        <h6 style="text-align:left">Welcome: <u>{{currentUser.first_name}}</u></h6>
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid" style="background-color: rgb(28, 29, 29)">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" style="text-align: center; margin-left: 30px">
+                            <div class="logo">
+                                <img class="img_round" src="../assets/profile.png" width="60" height="60" alt="Welcome" />
+                            </div>
+                        </a> 
+                        <div class="navbar-toggle" (click)="onToggleMenu()">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </div>
                     </div>
-                    <p style="text-align:center">
-                        <img class="img_round" src="../assets/profile.png" width="100" height="100" alt="Welcome" />
-                    </p>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="collapse navbar-collapse" [ngClass]="{'toggleMenuStyle': toggleMenu === true}">
 
-                    <div style="text-align:left;text-transform:uppercase">
-                        <ul id="list">
+                        <ul class="nav navbar-nav" style="text-align: left; color: rgb(17, 16, 16);">
                             <li>
-                                <a [routerLink]="['/profile']">MyProfile</a>
+                                <a [routerLink]="['/profile']">Profile</a>
+                             </li>
+                                <br>
+                            <li>
+                                <a [routerLink]="['/set']">Set New Quiz</a>
                             </li>
-
+                            <br>
                             <li>
-                                <a [routerLink]="['/products']">View Products</a>
+                                <a [routerLink]="['/approved']">Aproved Questions</a>
                             </li>
+                            <br>
                             <li>
-                                <a [routerLink]="['/quatations']">New Quotation</a>
+                                <a [routerLink]="['/unapproved']">Unapproved Questions</a>
                             </li>
-                        
-                            <li>
-                                    <a [routerLink]="['/myquotation']">Quotation Listing</a>
-                                </li>
-    
-                            <li>
-                                <a [routerLink]="['/policies']">Policy Listing</a>
-                            </li>
-
-                            <li>
-                                <a [routerLink]="['/query']">Inquiry</a>
-                            </li>                
-                            <li>
-                                <a [routerLink]="['/claims']">New Claim Notification</a>
-                            </li>
-
-                            <li>
-                                <a [routerLink]="['/vquery']">My Inquiries</a>
-                            </li>
-                                                     
+                            <br>
 
                             <li>
                                 <a [routerLink]="['/login']">Logout</a>
                             </li>
-                         
 
 
                         </ul>
-
                     </div>
                 </div>
             </nav>
         </div>
+
     </div>
+    <div class="item item-2" fxFlex="0%"> </div>
 
-
-    <div class="col-md-9 container" style="text-align:center">
+    <div class="item item-3 col-md-92" fxFlex="78%" fxFlexOrder="3" style="text-align:center">
         <!--  <div class="nav2"><p style="text-align:left">email: {{currentUser.email}}</p> </div> -->
 
         <router-outlet></router-outlet>
